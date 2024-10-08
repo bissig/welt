@@ -1,0 +1,177 @@
+if $ARGS[0] = 'start':
+  'Während du durch den dichten, nebligen Wald wanderst, vernimmst du plötzlich ein <a href="exec: gs ''PregGhosts'', ''forest''">seltsames Geräusch</a>. Es ist ein leises Wispern, das sich mit dem Wind zu dir herüberträgt.'
+end
+
+if $ARGS[0] = 'forest':
+	menu_off = 1
+	minut += 5
+	*clr & cla
+	gs 'stat'
+	'<center><b><font color="maroon">Wald</font></b></center>'
+	'<center><img <<$set_imgh>> src="images\events\PregGhosts\girl1.jpg"></center>'
+  'Als du durch das dichte Unterholz brichst, öffnet sich unerwartet eine kleine Lichtung vor dir. Im schwachen Licht siehst du ein Mädchen auf einem Baumstamm sitzen. Ihre langen, schwarzen Haare fallen sanft über die Schultern eines einfachen, weißen Kleides. Ein leises Schluchzen durchbricht die Stille, während eine unheimliche Aura die Luft erfüllt.'
+
+	act 'Hilf ihr':
+		minut += 1
+    *clr & cla
+  	gs 'stat'
+  	'<center><b><font color="maroon">Wald</font></b></center>'
+  	'<center><img <<$set_imgh>> src="images\events\PregGhosts\girl2.jpg"></center>'
+    '"Alles in Ordnung?" fragst du vorsichtig, als du die Lichtung betrittst und dich ihr näherst. Langsam heben sich ihre Augen, und du erkennst die Verzweiflung darin, als sie sich zu dir dreht. Sie scheint nicht viel älter zu sein als du, und ein überraschter Seufzer entweicht deinen Lippen, als du ihren hochschwangeren Bauch bemerkst.'
+    '"Kannst du mir helfen?" Ihre Stimme zittert vor Angst. Du nickst, unsicher, was als Nächstes kommen wird. Die Welt außerhalb der Stadtmauern ist voller Gefahren, besonders für junge Frauen wie euch.'
+    '"Bist du bereit, Mutter zu werden?" fragt sie plötzlich.'
+
+		act 'Was?':
+			minut += 1
+      cla
+			gs 'stat'
+      '"Ich... ich verstehe nicht", antwortest du verwirrt. "Warum fragst du das?"'
+      '"Ich wollte mein Kind zur Welt bringen, doch mir wurde diese Möglichkeit genommen. Kannst du mir helfen...?" Ihre Stimme ist leise und von Traurigkeit gezeichnet.'
+			act 'Ja':   gt 'PregGhosts', 'decision', 1
+			act 'Nein': gt 'PregGhosts', 'decision', 0
+		end
+	end
+	act 'Geh weg': gt 'PregGhosts', 'exit'
+end
+
+if $ARGS[0] = 'decision':
+  minut += 2
+  *clr & cla
+	gs 'stat'
+  '<center><b><font color="maroon">Wald</font></b></center>'
+  '<center><img <<$set_imgh>> src="images\events\PregGhosts\girl3.jpg"></center>'
+  if     ARGS[0] = 0:
+    '"Ich glaube nicht, dass ich dir helfen kann", lehnst du zögerlich ab.'
+  elseif ARGS[0] = 1:
+    '"Ich bin mir nicht sicher, ob ich dir helfen kann, aber ich werde es versuchen", antwortest du zögernd, verwirrt und überfordert von ihrer Bitte.'
+  end
+  'Plötzlich zieht sie dich in eine feste Umarmung. Ihr hochschwangerer Bauch drückt dabei fest gegen deinen. "Endlich wirst du geboren!" ruft sie aus, wobei sie sich mehr an ihr ungeborenes Kind zu wenden scheint als an dich. Es fühlt sich an, als würde das Kind antworten, denn du spürst eine Bewegung, vielleicht sogar einen Tritt.'
+  'Eine ungewöhnliche Wärme geht von ihrem Bauch aus und durchströmt dich, gefolgt von einem angenehmen Kribbeln, das sich in deinem Unterleib ausbreitet. Überrascht schließt du die Augen und stöhnst leise, überwältigt von der Intensität des Moments.'
+
+  act 'Öffne deine Augen ':
+    minut += 5
+    *clr & cla
+  	gs 'stat'
+    '<center><b><font color="maroon">Wald</font></b></center>'
+    '<center><img <<$set_imgh>> src="images\events\PregGhosts\alone.jpg"></center>'
+    'Als das Gefühl nachlässt, öffnest du langsam wieder die Augen und stellst fest, dass du auf dem Waldboden liegst. Verwirrt siehst du dich auf der Lichtung um, unsicher, wie es dazu gekommen ist. Du stehst auf und klopfst dir den Dreck von der Kleidung. Das Mädchen ist verschwunden. "Hallo?" rufst du, doch es gibt keine Antwort. Du beginnst zu zweifeln, ob die Begegnung mit dem schwangeren Mädchen wirklich stattgefunden hat.'
+    'Deine Hand wandert unbewusst zu deinem Bauch, während die Wärme langsam abklingt.  Du beschließt, dass es Zeit ist, den Weg zurück in die Stadt anzutreten.'
+
+    act 'Geh zurück zu Stadt':
+      minut += 15
+      *clr & cla
+    	gs 'stat'
+      '<center><b><font color="maroon">Wald</font></b></center>'
+      '<center><img <<$set_imgh>> src="images\events\PregGhosts\morning_sickness.jpg"></center>'
+      'Mitten auf dem Weg packt dich eine Welle der Übelkeit. Du atmest tief durch, konzentrierst dich auf die kühle Frische der Waldluft, doch das Unwohlsein in deinem Magen intensiviert sich nur. „Was ist nur los mit mir?“, flüsterst du, während du die Augen schließt und dich für einen Moment an den nächstbesten Baum lehnst. Tief und langsam atmend hoffst du, dass die Übelkeit bald vergeht. Nach einigen Minuten lässt sie schließlich nach.'
+
+      act 'Geh Weiter':
+        minut += 15
+        *clr & cla
+      	gs 'stat'
+        '<center><b><font color="maroon">Wald</font></b></center>'
+        '<center><img <<$set_imgh>> src="images\events\PregGhosts\early_belly.jpg"></center>'
+        'Kurz bevor du den geheimen Durchgang in die Stadt erreichst, hältst du inne, um Luft zu holen. Dabei bemerkst du eine ungewöhnliche Enge um deine Taille. Dein Shirt hat sich nach oben geschoben und macht Platz für die neue Rundung deines Bauches. „Was... was geschieht hier nur?“, flüsterst du verwirrt, während dein Blick auf der seltsamen Wölbung verweilt.'
+
+        act 'Geh in die Stadt':
+          minut += 10
+          *clr & cla
+        	gs 'stat'
+          '<center><b><font color="maroon">Stadt</font></b></center>'
+          '<center><img <<$set_imgh>> src="images\events\PregGhosts\early_belly_city.jpg"></center>'
+          'Zurück in der Stadt, versuchst du dich unauffällig in den Alltag einzugliedern. Doch es scheint, als würden alle Blicke magisch auf die deutlich sichtbare Wölbung deines Bauches gezogen.'
+          'In einem verzweifelten Versuch, diese zu verbergen, ziehst du dein Shirt herunter, doch genau in diesem Moment reißt deine Hose. Es wird unmöglich, den Bauch zu verstecken. Flüsternde Kommentare und getuschelte Vermutungen über deine vermeintliche Schwangerschaft erreichen deine Ohren. „Ich bin nicht schwanger!“, rufst du in Gedanken, während deine Wangen vor Verlegenheit glühen.'
+          'Hastig bemühst du dich, den neugierigen Blicken zu entkommen. Die bunten Auslagen der Schaufenster verschwimmen vor deinen Augen zu einem Farbspiel, während du dich eilig die Straße entlang drängst. Schließlich erreichst du ein Bekleidungsgeschäft, schlüpfst hinein und steuerst direkt auf die Umkleidekabinen zu. Sobald du die Tür hinter dir schließt, atmest du erleichtert auf, dankbar für einen Moment der Ruhe und des Rückzugs.'
+
+          act 'Zieh dich aus':
+            *clr & cla
+          	gs 'stat'
+            minut += 2
+            '<center><b><font color="maroon">Stadt</font></b></center>'
+            '<center><img <<$set_imgh>> src="images\events\PregGhosts\changing_room.jpg"></center>'
+            'Schließlich ziehst du dich aus und stehst bald nur noch in deiner Unterwäsche vor dem Spiegel. "Bin das wirklich ich?", fragst du dich leise, während du mit deinen Händen zögerlich die unerwartete Wölbung deines Bauches begutachtest. "Wie ist das nur passiert?" flüsterst du, während ein Gefühl der Hilflosigkeit in dir aufsteigt. Auch deine Brüste scheinen größer zu sein, so sehr, dass sie deinen BH bis aufs Äußerste spannen.'
+            'Eine sanfte Stimme reißt dich aus deinen Gedanken. "Benötigen Sie Hilfe?", fragt eine Verkäuferin von außen. Du verharrst einen Moment lang stumm, während du weiterhin dein Spiegelbild anstarrst. "Äh... ja, ich... mir geht''s gut. Ich brauche einfach ein neues Outfit und einen BH", antwortest du. "Alles klar. Ich bringe dir passende Umstandskleidung und einen BH zum Ausprobieren", sagt sie freundlich.'
+
+            act 'Du bist nicht Schwanger!':
+              minut += 2
+              *clr & cla
+            	gs 'stat'
+              '<center><b><font color="maroon">Stadt</font></b></center>'
+              '<center><img <<$set_imgh>> src="images\events\PregGhosts\baby_moving.gif"></center>'
+              '"Ich bin ni...", setzt du an, doch in genau diesem Moment fühlst du einen ungewöhnlichen Druck in deinem Bauch, gefolgt von einem sanften, doch unmissverständlichen Stoß. Du schluckst und änderst deine Antwort in ein zögerliches „Ja.“ Als Bestätigung spürst du erneut einen Tritt, diesmal kräftiger als zuvor. Ein leises Schluchzen entweicht deinen Lippen, während du in den Spiegel schaust und deinen Bauch betrachtest – deinen unerwartet schwangeren Bauch, in dem gegen jede Vernunft offenbar ein Leben heranwächst. Verzweiflung und Hilflosigkeit übermannen dich. „Warum? Was... Was passiert hier?“, schniefst du, während dir die Tränen über die Wangen laufen.'
+
+              act 'Weiter':
+                minut += 2
+                cla
+                gs 'stat'
+                'Die Verkäuferin, die deine innere Unruhe unterbricht, kommt zurück und reicht dir geschickt einen neuen BH sowie ein geschmackvolles Kleid.'
+                'Der BH sitzt perfekt und das Kleid passt sich gut an deine neue Silhouette an; du bist angenehm überrascht von ihrem treffsicheren Auge, denn alles siztzt perfekt.'
+                'Noch einen Moment betrachtest du dein Spiegelbild, erkennst dich kaum wieder. Doch du weißt, du kannst hier nicht bleiben. Du entscheidest, direkt nach Hause zu gehen... Nein, eigentlich ist die Schule näher.'
+
+                act 'Geh zur Kasse':
+                  *clr & cla
+                	gs 'stat'
+                  minut += 2
+                  '<center><b><font color="maroon">Stadt</font></b></center>'
+                  '<center><img <<$set_imgh>> src="images\events\PregGhosts\shop.jpg"></center>'
+                  'Mit neu gefasster Entschlossenheit verlässt du die Umkleidekabine und steuerst zielstrebig auf die Kasse zu.'
+                  '„Meine Freundin?“, wiederholst du verwirrt. „Ja, die, die deine Sachen ausgesucht hat... das Mädchen in dem weißen Kleid mit den schwarzen Haaren.“ „Das Mädchen aus dem Wald...“, flüsterst du, während ein Schauer deinen Körper durchläuft. Eine Lawine von Emotionen bricht über dich herein, und du presst deine Lippen zusammen, um nicht laut aufzuschluchzen, während du verzweifelt versuchst, die Tränen zurückzuhalten. Mit zitternden Händen greifst du nach der Tüte, verstaust hastig deine alten Kleider darin, und verlässt den Laden so schnell du kannst, als würdest du vor einer drohenden Wahrheit fliehen, die du noch nicht begreifen kannst.'
+
+                  act 'Weiter': gt 'PregGhosts', 'school'
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+if $ARGS[0] = 'school':
+  minut += 30
+  *clr & cla
+  gs 'stat'
+  '<center><b><font color="maroon">Wald</font></b></center>'
+  '<center><img <<$set_imgh>> src="images\events\PregGhosts\exhausted.jpg"></center>'
+  'Du erreichst das Mädchenwohnheim und versuchst, so unauffällig wie möglich zu deinem Zimmer zu gelangen. Mit einem schnellen Blick über die Schulter schließt du die Tür hinter dir, bevor du erschöpft von den Ereignissen und dem neuen Gewicht in deiner Mitte auf dein Bett sinkst.'
+  'Mit geschlossenen Augen atmest du tief durch, erleichtert, dass deine Schwester nicht da ist. In der Stille versuchst du, deine wirren Gedanken zu ordnen. Doch plötzlich spürst du einen sanften Tritt, als könnte das kleine Wesen in dir deine innere Zerrissenheit wahrnehmen.'
+  'Du atmest tief ein und legst vorsichtig deine Hand auf deinen Bauch. "Ich bin nicht deine Mutter...", flüsterst du leise. "Es tut mir leid", fügst du hinzu, während deine Stimme vor Unsicherheit zittert, "ich bin nicht bereit, dich zur Welt zu bringen." Ein weiterer sanfter Stoß lässt dich innehalten, als wollte das Kind dir antworten.'
+
+  act '...':
+    minut += 5
+    *clr & cla
+    gs 'stat'
+    '<center><b><font color="maroon">Wald</font></b></center>'
+    '<center><img <<$set_imgh>> src="images\events\PregGhosts\touch.jpg"></center>'
+    'Deine Gedanken überschlagen sich, während du versuchst, deine Situation zu begreifen. Wie konnte dies passieren? Warum gerade dir? Du hast das alles nicht gewollt, und die erdrückende Last dieser unerwarteten Verantwortung quält dich. Inmitten deiner Verzweiflung spürst du plötzlich, wie zwei Hände sanft über deinen Bauch streichen.'
+    '"Oh, schau nur... wie groß er geworden ist," flüstert eine vertraute Stimme direkt hinter dir.'
+    'Erschrocken springst du auf und drehst dich um. Das Mädchen aus dem Wald sitzt auf deinem Bett, doch sie ist nicht mehr schwanger. Wut und Verzweiflung steigen in dir auf wie eine Flutwelle. "Du... Was zum Teufel hast du getan?!" faucht du, während sich deine Hände zu Fäusten ballen.'
+    '"Ich will, dass mein Baby zur Welt kommt," antwortet sie ruhig, während sie aufsteht und erneut eine Hand auf deinen Bauch legt. Sofort wird das Baby in dir wieder aktiv, als würde es auf ihre Berührung reagieren. "Lass mich los!" schreist du, deine Stimme durchdrungen von Verzweiflung und Panik, während du dich von ihr losreißt und rückwärts stolpernd Abstand gewinnst.'
+
+    Act 'Ahhhhiii....':
+      minut += 5
+      *clr & cla
+      gs 'stat'
+      '<center><b><font color="maroon">Wald</font></b></center>'
+      '<center><img <<$set_imgh>> src="images\events\PregGhosts\first_labor.jpg"></center>'
+      '"Ich... Ahhhhiii..." Ein stechender, unerträglicher Schmerz durchfährt deinen Unterleib, und deine Hände krallen sich verzweifelt um deinen Bauch. "Siehst du? Auch das Baby will endlich geboren werden," flüstert das Mädchen mit unheimlicher Ruhe.'
+      '"Nein... Dasn sind... Wehen?!…" wird es dir klar. "Nimm es zurück... schnell, bitte... ich kann das nicht," flehst du verzweifelt.'
+      '"Das Kind braucht dich," erwidert das Mädchen mit kühler Stimme, während du zwischen den Wehen keuchst: "Aber ich will es nicht gebären." Tränen der Verzweiflung vermischen sich mit dem Schweiß auf deiner Stirn. Sie legt beruhigend eine Hand auf deine Stirn. "Du wirst es schaffen," sagt sie sanft.'
+      '"Aber ich will es nicht," keuchst du zurück, deine Stimme voller Panik und Widerstand. Doch der Schmerz und die Anspannung nehmen zu, als dein Körper gegen deinen Willen darauf vorbereitet wird, das Kind zu gebären. Der Druck in deinem Unterleib wird intensiver, und du spürst, wie dein Körper die Kontrolle übernimmt.'
+      '"Warte, ich helfe dir," sagt sie sanft, stützt dich und versucht, dich zum Bett zu führen.'
+      Act '"Ich kann das nicht!"':
+        minut += 2
+        *clr & cla
+        gs 'stat'
+        '<center><b><font color="maroon">Wald</font></b></center>'
+        '<center><img <<$set_imgh>> src="images\events\PregGhosts\water_break.jpg"></center>'
+        '"Ich kann das nicht!" wimmerst du, während du dich verzweifelt dagegen wehrst, zum Bett zu gehen. "Es wird alles gut," flüstert sie beruhigend, "aber lass mich dir helfen, dich auszuziehen."'
+        'Plötzlich spürst du, wie eine unsichtbare Kraft an deiner Kleidung zerrt, die dann auf den Boden fällt, als würde sie von selbst verschwinden. "Nein... bitte... lass mich in Frieden," flehst du, aber sie ignoriert deine verzweifelten Bitten.'
+        '"Es ist soweit," flüstert das Mädchen ruhig, während sie ihre Hand auf deinen Bauch legt, und du spürst sofort, wie das Baby wieder gegen deinen Gebärmutterhals drückt. Erleichtert stöhnst du auf, als der unerträgliche Druck plötzlich nachlässt. Doch die Erleichterung weicht schnell dem Entsetzen, als du plötzlich einen warmen Fluss spürst, der deine Oberschenkel hinabläuft – deine Fruchtblase ist geplatzt.'
+
+        Act 'Weiter': gt 'PregGhosts', 'birth'
+      end
+    end
+  end
+end
