@@ -175,3 +175,92 @@ if $ARGS[0] = 'school':
     end
   end
 end
+
+if $ARGS[0] = 'birth':
+  minut += 5
+  *clr & cla
+  gs 'stat'
+  '<center><b><font color="maroon">Wald</font></b></center>'
+  '<center><img <<$set_imgh>> src="images\events\PregGhosts\bed.jpg"></center>'
+  '"Ahhgghhh...!"" Ein Schrei der Qual entweicht dir, als ein weiteres Wellenmeer aus Schmerz deinen Unterleib durchflutet. Das Mädchen, ruhig und kontrolliert, packt dich sanft, aber entschlossen an der Hand und führt dich zum Bett. Dein Körper gibt nach, du sinkst schwer auf die Matratze, erschöpft, die letzte Kraft aus dir herausgepresst.'
+  '"Es ist doch traurig, dass es bis jetzt nicht geboren werden konnte, oder?" fragt sie sanft, während ihre Hand in ruhigen, gleichmäßigen Bewegungen deinen Bauch streichelt.'
+
+  Act 'Weiter':
+    minut += 5
+    *clr & cla
+    gs 'stat'
+    '<center><b><font color="maroon">Wald</font></b></center>'
+    '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
+    '"Ich... Hnnnngh... kann das... nicht..." keuchst du. Dein Bauch zieht sich zusammen, jeder Muskel spannt sich unerträglich. Du spürst, wie das Baby seinen Weg durch deinen Muttermund in den Geburtskanal drängt, und du dem Drang zu pressen verspürst.'
+    'Du kämpfst verzweifelt gegen den natürlichen Instinkt zu pressen an, und kreuzt deine Beine, wobei der Kopf sich wirklich ein wenig zurück bewegte.'
+    '"Es gibt keinen Grund zur Angst," flüstert das Mädchen dir beruhigend zu, ihre Stimme sanft und unheimlich tröstend. "Lass es einfach geschehen... alles wird gut."'
+
+
+    Act 'Weiter':
+      minut += 5
+      *clr & cla
+      gs 'stat'
+      '<center><b><font color="maroon">Wald</font></b></center>'
+      '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
+      '"Bitte... ich flehe dich an...", wimmerst du, verzweifelt gegen den unwiderstehlichen Drang zu pressen ankämpfend. „Hooo... aaah... bitte lass mich nicht dein Baby bekommen.“ Doch es ist vergebens – dein Körper folgt dem natürlichen Prozess, auch wenn du dich verzweifelt weigerst. Du spürst, wie das Baby, auch ohne deine Zutun, sich durch deinen Geburtskanal drängt.'
+      '"Nein, mein Liebes, das wird so nichts, du musst dich entspannen." sagt sie und du spürst, wie sie nach deinen Beinen greift, um sie behutsam öffnet.'
+
+      Act 'Weiter':
+        minut += 5
+        *clr & cla
+        gs 'stat'
+        '<center><b><font color="maroon">Wald</font></b></center>'
+        '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
+        '"Bitte! Tu das nicht, ich will nicht pressen!" flehst du, während sie deine Beinen behutsam zu deinem Bauch zu führen und Panik erfasst dich, als du begreifst, das sie deine beine in eime Gebärposition bring.'
+        '"Vertrau mir, so wird es einfacher" lächelt sie dich an. Das Geburtsbedürfnis deines Körpers scheint sich nur noch zu verstärken und der der Druck in deinem Unterleib nimmt zu'
+
+
+        Act 'Pressen!':
+          minut += 5
+          *clr & cla
+          gs 'stat'
+          '<center><b><font color="maroon">Wald</font></b></center>'
+          '<center><img <<$set_imgh>> src="images\events\PregGhosts\birth1.gif">'
+          '"Gaaahhhh!!!! Huf- AA- AAAAAAHHHHH!!!!!!" Der Schmerz, der durch deinen Körper schießt, ist überwältigend und deine Hände krallen sich in die Decke, während du versuchst, den Schmerz zu ertragen.'
+          '"Arghhh…." Eine weitere Wehe erfasst dich, und das Mädchen drückt deine Knie, weiter nach oben, bis du sie schließlich ergreifst. Dein ganzer Körper zittert vor Anstrengung, während du dich den instinktiv dem Drang zum Pressen hingibst und der Kopf des Babys beginnt, deine Schamlippen zu dehnen.'
+          'Die Anstrengung zeichnet sich in deinem Gesicht ab, während der Kopf des Babys beginnt, deine Schamlippen zu dehnen. Ein brennendes Gefühl durchflutet dich, und du beißt die Zähne zusammen, um den Schmerz zu ertragen.'
+          '"Gut so, ich sehe den Kopf schon!", ruft das Mädchen aufgeregt aus. Mit zusammengebissenen Zähnen atmest du schwer.'
+          Act 'Pressen!':
+            minut += 5
+            *clr & cla
+            gs 'stat'
+            '<center><b><font color="maroon">Wald</font></b></center>'
+            '<center><img <<$set_imgh>> src="images\events\PregGhosts\birth2.gif">'
+            '"Gnggghh!!! MnmMnMNm!! Hrgurgh! Gruggghhh!!" it einem letzten, kraftvollen Schub platzt der Kopf des Babys schließlich heraus, begleitet von einem Gefühl der Erleichterung und Erschöpfung, das dich überwältigt.'
+            '"Der Kopf ist da, er ist draußen!" jubelt das Mädchen erfüllt von Freude und Aufregung.'
+
+            Act 'Ein letztes mal Pressen!':
+              minut += 5
+              *clr & cla
+              gs 'stat'
+              '<center><b><font color="maroon">Wald</font></b></center>'
+              '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth2.gif">'
+              '"Ich kann nicht mehr... Nñggggghhhh! Ghhh! Hrrnngggggg! Gnnhhhhh!!!" Deine Stimme bricht in einem Mix aus Schmerz und Entkräftung, während du mit einem letzten Aufbäumen deiner Kräfte und einem Strom an Flüssigkeit das Baby vollständig in die wartenden Hände des Mädchens entlässt.'
+              'Völlig erschöpft und von Schweiß benetzt, liegst du regungslos im Bett und starrst an die Zimmerdecke. Das Schreien eines Babys dringt an deine Ohren, und du hörst, wie das Mädchen beruhigend auf das Neugeborene einredet. Trotz deiner Erschöpfung nimmst du das Baby instinktiv in deine Arme, als es behutsam auf deine Brust gelegt wird. "Sie hat Hunger", erklärt das Mädchen, und du nickst müde, während du das kleine Bündel an dich drückst.'
+              'Die kleinen Lippen des Babys finden schnell deine Brustwarze, und ein sanfter Sog beginnt. Ein überraschtes Stöhnen entweicht dir, als du das kribbelnde Gefühl spürst. "Bitte, nimm dein Kind und geh", flüsterst du schwach. "Das kann ich nicht tun. Meine Aufgabe ist erfüllt", antwortet das Mädchen ruhig.'
+              '"Ich habe das Kind zur Welt gebracht. Was erwartest du noch von mir?" Du schaust dich um, doch das Mädchen ist bereits verschwunden. "Nun, jetzt musst du sie großziehen. Sie ist jetzt dein Kind, und du bist ihre Mutter" hörst du ihre Stimme noch nachklingen.'
+              '"Ich werde... Ich werde jetzt... Ich weiß nicht, was ich tun soll...", bringst du stockend hervor, während du versuchst, deine Gedanken zu sortieren. Du fühlst dich überwältigt von der plötzlichen Verantwortung für das neugeborene Kind, das nun hungrig an deiner Brust saugt.'
+
+              Act 'Ein letztes mal Pressen!':
+                minut += 5
+                *clr & cla
+                gs 'stat'
+                '<center><b><font color="maroon">Wald</font></b></center>'
+                '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth2.gif">'
+                'Völlig erschöpft und von Schweiß benetzt, liegst du regungslos im Bett und starrst an die Zimmerdecke. Das Schreien eines Babys dringt an deine Ohren, und du hörst, wie das Mädchen beruhigend auf das Neugeborene einredet. Trotz deiner Erschöpfung nimmst du das Baby instinktiv in deine Arme, als es behutsam auf deine Brust gelegt wird. "Sie hat Hunger", erklärt das Mädchen, und du nickst müde, während du das kleine Bündel an dich drückst.'
+                'Die kleinen Lippen des Babys finden schnell deine Brustwarze, und ein sanfter Sog beginnt. Ein überraschtes Stöhnen entweicht dir, als du das kribbelnde Gefühl spürst. "Bitte, nimm dein Kind und geh", flüsterst du schwach. "Das kann ich nicht tun. Meine Aufgabe ist erfüllt", antwortet das Mädchen ruhig.'
+                '"Ich habe das Kind zur Welt gebracht. Was erwartest du noch von mir?" Du schaust dich um, doch das Mädchen ist bereits verschwunden. "Nun, jetzt musst du sie großziehen. Sie ist jetzt dein Kind, und du bist ihre Mutter" hörst du ihre Stimme noch nachklingen.'
+                '"Ich werde... Ich werde jetzt... Ich weiß nicht, was ich tun soll...", bringst du stockend hervor, während du versuchst, deine Gedanken zu sortieren. Du fühlst dich überwältigt von der plötzlichen Verantwortung für das neugeborene Kind, das nun hungrig an deiner Brust saugt.'
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
