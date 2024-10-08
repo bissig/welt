@@ -87,7 +87,7 @@ if $ARGS[0] = 'decision':
 		end
 	end
 end
--------------------------------
+
 if $ARGS[0] = 'city':
 	act 'Geh in die Stadt':
 		minut += 10
@@ -95,9 +95,9 @@ if $ARGS[0] = 'city':
 		gs 'stat'
 		'<center><b><font color="maroon">Stadt</font></b></center>'
 		'<center><img <<$set_imgh>> src="images\events\PregGhosts\early_belly_city.jpg"></center>'
-		'Zurück in der Stadt, versuchst du dich unauffällig in den Alltag einzugliedern. Während du durch die engen Gassen gehst, merkst du, dass die Blicke der Leute dir folgen. Zunächst schenkst du dem keine Beachtung, doch bald wird dir klar, dass sie alle auf deinen Bauch starren.'
+		'Zurück in der Stadt versuchst du, dich unauffällig in den Alltag einzugliedern. Während du durch die engen Gassen gehst, merkst du, dass die Blicke der Leute dir folgen. Zunächst schenkst du dem keine Beachtung, doch bald wird dir klar, dass sie alle auf deinen Bauch starren.'
 		'Dein Shirt hat sich erneut hochgeschoben, und die Wölbung deines Bauches ist jetzt deutlich sichtbar. Du versuchst hastig, es wieder herunterzuziehen, doch die Enge deiner Kleidung macht das immer schwieriger. Gerade als du es schaffst, reißt deine Hose plötzlich an der Taille. Ein leises Keuchen entweicht dir, als du merkst, dass es unmöglich wird, deinen Bauch länger zu verstecken.'
-		'Flüsternde Kommentare und getuschelte Vermutungen über deine vermeintliche Schwangerschaft erreichen deine Ohren. „Ich bin nicht schwanger!“, rufst du in Gedanken, während deine Wangen vor Verlegenheit glühen.'
+		'Flüsternde Kommentare und getuschelte Vermutungen über deine vermeintliche Schwangerschaft erreichen deine Ohren. „Ich bin nicht schwanger!“, denkst du verzweifelt, während deine Wangen vor Verlegenheit glühen.'
 		'Hastig bemühst du dich, den neugierigen Blicken zu entkommen. Die bunten Auslagen der Schaufenster verschwimmen vor deinen Augen zu einem Farbspiel, während du dich eilig die Straße entlang drängst. Schließlich erreichst du ein Bekleidungsgeschäft, schlüpfst hinein und steuerst direkt auf die Umkleidekabinen zu. Sobald du die Tür hinter dir schließt, atmest du erleichtert auf, dankbar für einen Moment der Ruhe und des Rückzugs.'
 
     		act 'Suche nach einem Geschäft':
@@ -111,8 +111,7 @@ if $ARGS[0] = 'city':
 		        
 			act 'Weiter':
 				minut += 2
-				'Eine sanfte Stimme reißt dich aus deinen Gedanken. "Benötigen Sie Hilfe?", fragt eine Verkäuferin von außen. Du verharrst einen Moment lang stumm, während du weiterhin dein Spiegelbild anstarrst. "Äh... ja, ich... mir geht''s gut. Ich brauche einfach ein neues Outfit.... und einen BH", antwortest du. "Alles klar. Ich bringe dir passende Umstandskleidung und einen BH zum Ausprobieren", sagt sie freundlich.'
-				
+				'Eine sanfte Stimme reißt dich aus deinen Gedanken. "Benötigen Sie Hilfe?", fragt eine Verkäuferin von außen. Du verharrst einen Moment lang stumm, während du weiterhin dein Spiegelbild anstarrst. "Äh... ja, mir geht''s gut. Ich brauche einfach ein neues Outfit... und einen BH", antwortest du. "Alles klar. Ich bringe dir passende Umstandskleidung und einen BH zum Ausprobieren", sagt sie freundlich.'
 				act 'Du bist nicht Schwanger!':
 					minut += 2
 					*clr & cla
@@ -120,13 +119,11 @@ if $ARGS[0] = 'city':
 					'<center><b><font color="maroon">Stadt</font></b></center>'
 					'<center><img <<$set_imgh>> src="images\events\PregGhosts\baby_moving.gif"></center>'
 					'"Ich bin ni...", setzt du an, doch in genau diesem Moment fühlst du einen ungewöhnlichen Druck in deinem Bauch, gefolgt von einem sanften, doch unmissverständlichen Stoß. Du schluckst und änderst deine Antwort in ein zögerliches „Ja“ Als Bestätigung spürst du erneut einen Tritt, diesmal kräftiger als zuvor. Ein leises Schluchzen entweicht deinen Lippen, während du in den Spiegel schaust und deinen Bauch betrachtest – deinen schwangeren Bauch, in dem gegen jede Vernunft offenbar ein Leben heranwächst. Verzweiflung und Hilflosigkeit übermannen dich. „Warum? Was... Was passiert hier?“, schniefst du, während dir die Tränen über die Wangen laufen.'
-					
 					act 'Weiter':
 						minut += 2
 						cla
 						gs 'stat'
-		            			'Die Verkäuferin, bringt dir ein einen neuen BH sowie ein geschmackvolles Kleid. 
-						'Der BH sitzt perfekt und das Kleid kaschiert dein Bauch besser; du bist angenehm überrascht von ihrem treffsicheren Auge, denn alles siztzt perfekt.'
+						'Die Verkäuferin bringt dir einen neuen BH sowie ein geschmackvolles Kleid. Der BH sitzt perfekt und das Kleid kaschiert deinen Bauch besser; du bist angenehm überrascht von ihrem treffsicheren Auge, denn alles sitzt perfekt.'
 						'Noch einen Moment betrachtest du dein Spiegelbild, erkennst dich kaum wieder. Doch du weißt, du kannst hier nicht bleiben. Du entscheidest, direkt nach Hause zu gehen... Nein, eigentlich ist die Schule näher.'
 
 						act 'Geh zur Kasse':
@@ -138,13 +135,13 @@ if $ARGS[0] = 'city':
 							'Du gehst zur Kasse und versuchst, dich so unauffällig wie möglich zu verhalten. Doch bevor du bezahlen kannst, sagt die Kassiererin mit einem Lächeln: "Deine Freundin hat schon alles bezahlt. Willst du eine Tüte für deine alten Klamotten?"'
                 					'Verwirrt schaust du sie an. "Meine Freundin?", wiederholst du. "Ja, das Mädchen in dem weißen Kleid mit den schwarzen Haaren, das dir deine Kleidung gebracht hat.", antwortet sie freundlich.'
 							'Ein kalter Schauer läuft dir über den Rücken - Das Mädchen aus dem Wald. "Das... kann nicht sein", murmelst du und verlässt eilig das Geschäft.'
-            
+
 							act 'Zurück zur Schule':
 								minut += 15
 								*clr & cla
 								gs 'stat'
 								'<center><b><font color="maroon">Schule</font></b></center>'
-								'<center><img <<$set_imgh>> src="images\events\PregGhosts\school.jpg"></center>'
+								'<center><img <<$set_imgh>> src="images\events\PregGhosts\go_school.jpg"></center>'
 								'Mit klopfendem Herzen und der neuen Kleidung machst du dich auf den Weg zurück zur Schule. Du willst nur noch in dein Zimmer, weg von den Menschen und den Fragen, die dir durch den Kopf schwirren.'
 
 								act 'Weiter': gt 'PregGhosts', 'school'
@@ -163,43 +160,49 @@ if $ARGS[0] = 'school':
 	gs 'stat'
 	'<center><b><font color="maroon">Wald</font></b></center>'
 	'<center><img <<$set_imgh>> src="images\events\PregGhosts\exhausted.jpg"></center>'								
-	'Du erreichst das Mädchenwohnheim und versuchst, so unauffällig wie möglich zu deinem Zimmer zu gelangen. Mit einem schnellen Blick über die Schulter schließt du die Tür hinter dir, bevor du erschöpft von den Ereignissen und dem neuen Gewicht in deiner Mitte auf dein Bett sinkst.'
-	'Während du die Augen schließt und versuchst, dich zu entspannen, spürst du plötzlich einen sanften Tritt in deinem Bauch. Dein Atem stockt, als du realisierst, dass das, was in dir heranwächst, mehr als nur eine seltsame Wölbung ist. "Was ist mit mir passiert?", flüsterst du, während eine Träne über deine Wange rollt.'
-	
-	'Du atmest tief ein und legst vorsichtig deine Hand auf deinen Bauch. "Ich bin nicht deine Mutter...", flüsterst du leise. "Es tut mir leid", fügst du hinzu, während deine Stimme vor Unsicherheit zittert, "ich bin nicht bereit, dich zur Welt zu bringen." Ein weiterer sanfter Stoß lässt dich innehalten, als wollte das Kind dir antworten.'
-	
+	'Du erreichst das Mädchenwohnheim und versuchst, so unauffällig wie möglich zu deinem Zimmer zu gelangen. Dein Herz schlägt schneller, während du durch die Flure schleichst, in der Hoffnung, niemandem zu begegnen. Mit einem schnellen Blick über die Schulter schließt du die Tür hinter dir, bevor du erschöpft von den Ereignissen und dem ungewohnten Gewicht in deiner Mitte auf dein Bett sinkst.'
+	'Deine Gedanken überschlagen sich, während du die Augen schließt und versuchst, dich zu entspannen. Plötzlich spürst du einen sanften Tritt in deinem Bauch. Dein Atem stockt, und dein Körper verkrampft sich, als du realisierst, dass das, was in dir heranwächst, mehr ist als nur eine seltsame Wölbung. Es ist lebendig. "Was ist mit mir passiert?", flüsterst du mit brüchiger Stimme, während eine einsame Träne über deine Wange rollt.'
+	'Du atmest tief ein, versuchst, deine Panik zu unterdrücken, und legst vorsichtig deine zitternde Hand auf deinen Bauch. "Hahaha... du bist wirklich voller Energie", flüsterst du leise. "Wenn du geboren wirst, wirst du bestimmt ein starkes Kind." Ein weiterer sanfter Stoß lässt dich innehalten, als ob das Kind dir antworten würde.'
+	'"Aber... es tut mir leid", flüsterst du und spürst, wie dein Herz schwer wird. "Ich bin nicht deine Mutter... ich kann dich nicht zur Welt bringen..."'
+
 	act '...':
 		minut += 5
 		*clr & cla
 		gs 'stat'
 		'<center><b><font color="maroon">Wald</font></b></center>'
 		'<center><img <<$set_imgh>> src="images\events\PregGhosts\touch.jpg"></center>'
-		'Deine Gedanken überschlagen sich, während du versuchst, deine Situation zu begreifen. Wie konnte dies passieren? Warum gerade dir? Du hast das alles nicht gewollt, und die erdrückende Last dieser unerwarteten Verantwortung quält dich. Inmitten deiner Verzweiflung spürst du plötzlich, wie zwei Hände sanft über deinen Bauch streichen.'
-		'"Oh, schau nur... wie groß er geworden ist," flüstert eine vertraute Stimme direkt hinter dir.'
-		'Erschrocken springst du auf und drehst dich um. Das Mädchen aus dem Wald sitzt auf deinem Bett, doch sie ist nicht mehr schwanger. Wut und Verzweiflung steigen in dir auf wie eine Flutwelle. "Du... Was zum Teufel hast du getan?!" faucht du, während sich deine Hände zu Fäusten ballen.'
-		'"Ich will, dass mein Baby zur Welt kommt," antwortet sie ruhig, während sie aufsteht und erneut eine Hand auf deinen Bauch legt. Sofort wird das Baby in dir wieder aktiv, als würde es auf ihre Berührung reagieren. "Lass mich los!" schreist du, deine Stimme durchdrungen von Verzweiflung und Panik, während du dich von ihr losreißt und rückwärts stolpernd Abstand gewinnst.'
-		
-		Act 'Ahhhhiii....':
-			minut += 5
+		'Deine Stimme bricht, und deine Gedanken überschlagen sich, während du versuchst, deine Situation zu begreifen. Wie konnte dies passieren? Warum gerade dir? Du hast das alles nicht gewollt, und die erdrückende Last dieser unerwarteten Verantwortung quält dich.'
+		'Inmitten deiner Verzweiflung spürst du plötzlich, wie zwei Hände sanft über deinen Bauch streichen. "Oh, schau nur... wie groß er geworden ist," flüstert eine vertraute Stimme direkt hinter dir.'
+		'Erschrocken springst du auf und drehst dich um. Das Mädchen aus dem Wald sitzt auf deinem Bett. Wut und Verzweiflung steigen in dir auf wie eine Flutwelle. "Du... Was zum Teufel hast du getan?!" fauchst du, während sich deine Hände zu Fäusten ballen.'
+		'"Ich will, dass mein Baby zur Welt kommt," antwortet sie ruhig, während sie aufsteht.'
+
+		act 'Sie ist nicht mehr schwanger?!':
+			minut += 1
 			*clr & cla
 			gs 'stat'
 			'<center><b><font color="maroon">Wald</font></b></center>'
 			'<center><img <<$set_imgh>> src="images\events\PregGhosts\first_labor.jpg"></center>'
-			'"Ich... Ahhhhiii..." Ein stechender, unerträglicher Schmerz durchfährt deinen Unterleib, und deine Hände krallen sich verzweifelt um deinen Bauch. "Siehst du? Auch das Baby will endlich geboren werden," flüstert das Mädchen mit unheimlicher Ruhe.'
-			'"Nein... Dasn sind... Wehen?!…" wird es dir klar. "Nimm es zurück... schnell, bitte... ich kann das nicht," flehst du verzweifelt.'
-			'"Das Kind braucht dich," erwidert das Mädchen mit kühler Stimme, während du zwischen den Wehen keuchst: "Aber ich will es nicht gebären." Tränen der Verzweiflung vermischen sich mit dem Schweiß auf deiner Stirn. Sie legt beruhigend eine Hand auf deine Stirn. "Du wirst es schaffen," sagt sie sanft.'
-			'"Aber ich will es nicht," keuchst du zurück, deine Stimme voller Panik und Widerstand. Doch der Schmerz und die Anspannung nehmen zu, als dein Körper gegen deinen Willen darauf vorbereitet wird, das Kind zu gebären. Der Druck in deinem Unterleib wird intensiver, und du spürst, wie dein Körper die Kontrolle übernimmt.'
-			'"Warte, ich helfe dir," sagt sie sanft, stützt dich und versucht, dich zum Bett zu führen.'
-			Act '"Ich kann das nicht!"':
-				minut += 2
+			'Erst jetzt fällt dir auf, dass sie nicht mehr schwanger ist.'
+			'"Du... du bist nicht mehr schwanger..." stellst du fassungslos fest.'
+			'"Das Kind braucht dich," antwortet sie ruhig und legt erneut eine Hand auf deinen Bauch. Sofort spürst du, wie das Baby in dir wieder aktiv wird, als würde es auf ihre Berührung reagieren.'
+			'Du begreifst plötzlich, dass sie die Mutter des Kindes ist, das du nun in dir trägst. Panik überkommt dich. "Lass mich los!" schreist du und schlägst ihre Hand weg. "Nimm es zurück!"'
+			'Doch sie bleibt ruhig, ihre Augen voller unergründlicher Traurigkeit. "Ich wollte... dieses Kind zur Welt bringen. Deswegen habe ich mich an dich gewandt."'
+			'"Ich habe nie gesagt, dass ich ein Kind für dich zur Welt bringen würde. Ich... Ahhhhiii..." Ein stechender, unerträglicher Schmerz durchfährt deinen Unterleib, und deine Hände krallen sich verzweifelt um deinen Bauch. Dein Körper beugt sich unwillkürlich nach vorne, während sich alles in dir zusammenzieht.'
+			'Der Schmerz ist so überwältigend, dass du kaum noch atmen kannst. Deine Beine zittern, und Tränen füllen deine Augen, während du gegen die unaufhaltsamen Wellen des Schmerzes ankämpfst.'
+			'Das Mädchen sitzt still da, ihre Augen fest auf deinen Bauch gerichtet. "Mein einziger Wunsch ist... dass dieses Kind geboren wird... das ist alles." Ihre Stimme ist kalt und emotionslos, als ob sie deinen Schmerz nicht einmal wahrnehmen würde.'
+			'"Nein... Das... das sind... Wehen?!", begreifst du plötzlich, als ein weiterer scharfer Schmerz deinen Körper durchzuckt. Du fällst fast auf die Knie, unfähig, gegen die unkontrollierbare Gewalt deines eigenen Körpers anzukämpfen. "Nimm es zurück... bitte..." flehst du verzweifelt, deine Stimme bricht unter der Last der Schmerzen.'
+
+			act 'Weiter':
+				minut += 1
 				*clr & cla
 				gs 'stat'
 				'<center><b><font color="maroon">Wald</font></b></center>'
 				'<center><img <<$set_imgh>> src="images\events\PregGhosts\water_break.jpg"></center>'
-				'"Ich kann das nicht!" wimmerst du, während du dich verzweifelt dagegen wehrst, zum Bett zu gehen. "Es wird alles gut," flüstert sie beruhigend, "aber lass mich dir helfen, dich auszuziehen."'
-				'Plötzlich spürst du, wie eine unsichtbare Kraft an deiner Kleidung zerrt, die dann auf den Boden fällt, als würde sie von selbst verschwinden. "Nein... bitte... lass mich in Frieden," flehst du, aber sie ignoriert deine verzweifelten Bitten.'
-				'"Es ist soweit," flüstert das Mädchen ruhig, während sie ihre Hand auf deinen Bauch legt, und du spürst sofort, wie das Baby wieder gegen deinen Gebärmutterhals drückt. Erleichtert stöhnst du auf, als der unerträgliche Druck plötzlich nachlässt. Doch die Erleichterung weicht schnell dem Entsetzen, als du plötzlich einen warmen Fluss spürst, der deine Oberschenkel hinabläuft – deine Fruchtblase ist geplatzt.'
-				
+				'Das Mädchen sieht dich mit einer seltsamen Ruhe an. "Siehst du, das Kind will auch geboren werden", sagt sie leise. "Aber lass mich dir helfen, dich auszuziehen."'
+				'"Nein... bitte... lass mich in Frieden," flehst du und kämpfst dich wieder auf deine Füße, aber sie ignoriert deine verzweifelten Bitten. Du spürst, wie sich deine Kleidung aufzulösen beginnt.'
+				'"Nein... bitte... lass mich in Frieden," flehst du und kämpfst dich wieder auf deine Füße, aber sie ignoriert deine verzweifelten Bitten. Du spürst, wie sich deine Kleidung aufzulösen beginnt.'
+				'Du stöhnst erleichtert auf, als der unerträgliche Druck plötzlich nachlässt. Doch die Erleichterung weicht schnell dem Entsetzen, als du plötzlich eine warme Flüssigkeit spürst, die deine Oberschenkel hinabläuft – deine Fruchtblase ist geplatzt.'
+
 				Act 'Weiter': gt 'PregGhosts', 'birth'
 			end
 		end
@@ -207,90 +210,65 @@ if $ARGS[0] = 'school':
 end
 
 if $ARGS[0] = 'birth':
-  minut += 5
-  *clr & cla
-  gs 'stat'
-  '<center><b><font color="maroon">Wald</font></b></center>'
-  '<center><img <<$set_imgh>> src="images\events\PregGhosts\bed.jpg"></center>'
-  '"Ahhgghhh...!"" Ein Schrei der Qual entweicht dir, als ein weiteres Wellenmeer aus Schmerz deinen Unterleib durchflutet. Das Mädchen, ruhig und kontrolliert, packt dich sanft, aber entschlossen an der Hand und führt dich zum Bett. Dein Körper gibt nach, du sinkst schwer auf die Matratze, erschöpft, die letzte Kraft aus dir herausgepresst.'
-  '"Es ist doch traurig, dass es bis jetzt nicht geboren werden konnte, oder?" fragt sie sanft, während ihre Hand in ruhigen, gleichmäßigen Bewegungen deinen Bauch streichelt.'
-
-  Act 'Weiter':
-    minut += 5
-    *clr & cla
-    gs 'stat'
-    '<center><b><font color="maroon">Wald</font></b></center>'
-    '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
-    '"Ich... Hnnnngh... kann das... nicht..." keuchst du. Dein Bauch zieht sich zusammen, jeder Muskel spannt sich unerträglich. Du spürst, wie das Baby seinen Weg durch deinen Muttermund in den Geburtskanal drängt, und du dem Drang zu pressen verspürst.'
-    'Du kämpfst verzweifelt gegen den natürlichen Instinkt zu pressen an, und kreuzt deine Beine, wobei der Kopf sich wirklich ein wenig zurück bewegte.'
-    '"Es gibt keinen Grund zur Angst," flüstert das Mädchen dir beruhigend zu, ihre Stimme sanft und unheimlich tröstend. "Lass es einfach geschehen... alles wird gut."'
+	minut += 5
+	*clr & cla
+	gs 'stat'
+	'<center><b><font color="maroon">Wald</font></b></center>'
+	'<center><img <<$set_imgh>> src="images\events\PregGhosts\bed.jpg"></center>'
+	'"Ahhgghhh...!" Ein Schrei der Qual entweicht dir. Der Druck hatte zwar etwas nachgelassen, doch nun spürst du schmerzhaft, wie der Kopf des Babys unerbittlich gegen deinen Gebärmutterhals drückt. Dein Körper schreit danach, zu pressen, doch du versuchst verzweifelt, dich dagegen zu wehren.'
+	'Das Mädchen stützt dich sanft, aber entschlossen, und führt dich zum Bett, während du mit aller Kraft gegen den unaufhaltsamen Drang zu pressen ankämpfst. Du schaffst es gerade noch, auf die Matratze zu sinken, bevor eine weitere Welle des Schmerzes deinen Körper überrollt.'
+	'"Es ist doch traurig, dass es bis jetzt nicht geboren werden konnte, oder?" fragt sie sanft, während ihre Hand in gleichmäßigen, beruhigenden Bewegungen über deinen Bauch streicht.'
+	'"Nein, nein, nein, nein, nein!", stöhnst du panisch bei der nächsten Wehe, während du deine Beine so fest zusammenpresst, wie du nur kannst. Das Baby kann nicht kommen, wenn kein Platz da ist, denkst du verzweifelt.'
+	'"Nein, mein Liebes, das wird so nichts. Du musst dich entspannen," sagt sie mit einer beruhigenden Stimme, die im krassen Gegensatz zu deiner Panik steht.
 
 
-    Act 'Weiter':
-      minut += 5
-      *clr & cla
-      gs 'stat'
-      '<center><b><font color="maroon">Wald</font></b></center>'
-      '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
-      '"Bitte... ich flehe dich an...", wimmerst du, verzweifelt gegen den unwiderstehlichen Drang zu pressen ankämpfend. „Hooo... aaah... bitte lass mich nicht dein Baby bekommen.“ Doch es ist vergebens – dein Körper folgt dem natürlichen Prozess, auch wenn du dich verzweifelt weigerst. Du spürst, wie das Baby, auch ohne deine Zutun, sich durch deinen Geburtskanal drängt.'
-      '"Nein, mein Liebes, das wird so nichts, du musst dich entspannen." sagt sie und du spürst, wie sie nach deinen Beinen greift, um sie behutsam öffnet.'
-
-      Act 'Weiter':
-        minut += 5
-        *clr & cla
-        gs 'stat'
-        '<center><b><font color="maroon">Wald</font></b></center>'
-        '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth_prevent.gif">'
-        '"Bitte! Tu das nicht, ich will nicht pressen!" flehst du, während sie deine Beinen behutsam zu deinem Bauch zu führen und Panik erfasst dich, als du begreifst, das sie deine beine in eime Gebärposition bring.'
-        '"Vertrau mir, so wird es einfacher" lächelt sie dich an. Das Geburtsbedürfnis deines Körpers scheint sich nur noch zu verstärken und der der Druck in deinem Unterleib nimmt zu'
+	'"Bitte... ich flehe dich an...", wimmerst du, während du verzweifelt gegen den unwiderstehlichen Drang zu pressen ankämpfst. "Hooo... aaah... bitte lass mich nicht dein Baby bekommen..."'
+	'Doch das unerbittliche Gefühl, dass das Baby weiter seinen Weg findet, bleibt bestehen. "Es gibt keinen Grund zur Angst", sagt das Mädchen sanft.'
+	'"Ich bin noch nicht bereit, Mutter zu werden", denkst du verzweifelt, während du alles in deiner Macht Stehende tust, um nicht zu pressen. "Wie kann ich Mutter werden, wenn ich noch nicht einmal Sex hatte?"'
+	'"Ich... Hnnnngh... will das... nicht..." keuchst du, während du mit aller Kraft versuchst, dem Drang zu widerstehen, zu pressen, und kreuzt deine Beine, wobei der Kopf des Babys sich tatsächlich ein wenig zurückzieht.'
+	'"Ich will noch keine Kinder haben", denkst du verzweifelt. "Lass es einfach geschehen... alles wird gut", sagt das Mädchen beruhigend, ihre Stimme ist sanft und unheimlich tröstlich.'
 
 
-        Act 'Pressen!':
-          minut += 5
-          *clr & cla
-          gs 'stat'
-          '<center><b><font color="maroon">Wald</font></b></center>'
-          '<center><img <<$set_imgh>> src="images\events\PregGhosts\birth1.gif">'
-          '"Gaaahhhh!!!! Huf- AA- AAAAAAHHHHH!!!!!!" Der Schmerz, der durch deinen Körper schießt, ist überwältigend und deine Hände krallen sich in die Decke, während du versuchst, den Schmerz zu ertragen.'
-          '"Arghhh…." Eine weitere Wehe erfasst dich, und das Mädchen drückt deine Knie, weiter nach oben, bis du sie schließlich ergreifst. Dein ganzer Körper zittert vor Anstrengung, während du dich den instinktiv dem Drang zum Pressen hingibst und der Kopf des Babys beginnt, deine Schamlippen zu dehnen.'
-          'Die Anstrengung zeichnet sich in deinem Gesicht ab, während der Kopf des Babys beginnt, deine Schamlippen zu dehnen. Ein brennendes Gefühl durchflutet dich, und du beißt die Zähne zusammen, um den Schmerz zu ertragen.'
-          '"Gut so, ich sehe den Kopf schon!", ruft das Mädchen aufgeregt aus. Mit zusammengebissenen Zähnen atmest du schwer.'
-          Act 'Pressen!':
-            minut += 5
-            *clr & cla
-            gs 'stat'
-            '<center><b><font color="maroon">Wald</font></b></center>'
-            '<center><img <<$set_imgh>> src="images\events\PregGhosts\birth2.gif">'
-            '"Gnggghh!!! MnmMnMNm!! Hrgurgh! Gruggghhh!!" it einem letzten, kraftvollen Schub platzt der Kopf des Babys schließlich heraus, begleitet von einem Gefühl der Erleichterung und Erschöpfung, das dich überwältigt.'
-            '"Der Kopf ist da, er ist draußen!" jubelt das Mädchen erfüllt von Freude und Aufregung.'
+	'Für einen kurzen Moment lässt du nach, gerade genug, dass sich deine Beine ein kleines bisschen öffnen. Doch das ist alles, was dein Körper braucht, und du stöhnst auf bei dem schmerzhaften Gefühl, wie der Kopf des Babys sich durch deinen Muttermund in den Geburtskanal drängt.'
+	'Deine Beine öffneten sich und du kannst nicht mehr geschlossen halten. Du spürst, wie der Kopf des Babys sich weiter durch dein Geburtskanal drängt.
+	'"Gut so", ruft das Mädchen aufgeregt aus und greift nach deine beine um sie behutsam zu öffnet, als der Kopf deine Vulva zu wölben begint.'
+	'"Bitte! Tu das nicht, ich will nicht pressen!" flehst du, während du verzweifelt mit deinen Händen versuchst, das Kind physisch davon abzuhalten, herauszukommen.'
+	'"Arghhh…." Eine weitere Wehe erfasst dich, und das Mädchen zieht deine Knie nach oben in eine Gebärposition, um die Wehe zu unterstützen. Du greifst nach ihr, während du versuchst, den intensiven Schmerz zu ertragen.'
+	'Plötzlich beginnt dein Schritt zu brennen. "Gaaahhhh!!!! Huf- AA- AAAAAAHHHHH!!!!!!" schreist du, während das brennende Gefühl sich ausbreitet. "Ich kann den Kopf sehen!", ruft das Mädchen aufmunternd. Doch das Brennen wird nur schlimmer, und du spürst, wie du an deine Grenzen stößt.'
+	'Schließlich greifst du nach deinen eigenen Beinen, dein ganzer Körper zittert vor Anstrengung, während du dich instinktiv dem Drang zum Pressen hingibst. Der Kopf des Babys beginnt, deine Schamlippen schmerzhaft zu dehnen.'
+	'Du holst tief Luft und schreist mit aller Kraft, während du presst. "Nnggggghhhh!" Flüssigkeit spritzt aus dir, als im nächsten Moment der Kopf des Babys aus deiner schmerzenden Vagina platzt. "Der Kopf ist da, er ist draußen!" jubelt das Mädchen, erfüllt von Freude und Aufregung.'
+	'Du stöhnst, als sich der Kopf langsam dreht, und spürst, wie die Schultern des Babys nun auf deine bereits gedehnte und schmerzende Vagina drücken.'
+	'"Ich kann nicht mehr... Nñggggghhhh! Ghhh! Hrrnngggggg! Gnnhhhhh!!!" Deine Stimme bricht in einem Mix aus Schmerz und Entkräftung, während du mit deinem Körper arbeitest.'
+	'Die Schultern dehnen deine Vagina bis an ihre äußersten Grenzen und darüber hinaus, und du beißt dir auf die Lippe, bis du Blut schmeckst. Schließlich kommen die Schultern mit einem lauten Platschen heraus, und das Baby wird vollständig in die wartenden Hände des Mädchens entlassen.'
 
-            Act 'Ein letztes mal Pressen!':
-              minut += 5
-              *clr & cla
-              gs 'stat'
-              '<center><b><font color="maroon">Wald</font></b></center>'
-              '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth2.gif">'
-              '"Ich kann nicht mehr... Nñggggghhhh! Ghhh! Hrrnngggggg! Gnnhhhhh!!!" Deine Stimme bricht in einem Mix aus Schmerz und Entkräftung, während du mit einem letzten Aufbäumen deiner Kräfte und einem Strom an Flüssigkeit das Baby vollständig in die wartenden Hände des Mädchens entlässt.'
-              'Völlig erschöpft und von Schweiß benetzt, liegst du regungslos im Bett und starrst an die Zimmerdecke. Das Schreien eines Babys dringt an deine Ohren, und du hörst, wie das Mädchen beruhigend auf das Neugeborene einredet. Trotz deiner Erschöpfung nimmst du das Baby instinktiv in deine Arme, als es behutsam auf deine Brust gelegt wird. "Sie hat Hunger", erklärt das Mädchen, und du nickst müde, während du das kleine Bündel an dich drückst.'
-              'Die kleinen Lippen des Babys finden schnell deine Brustwarze, und ein sanfter Sog beginnt. Ein überraschtes Stöhnen entweicht dir, als du das kribbelnde Gefühl spürst. "Bitte, nimm dein Kind und geh", flüsterst du schwach. "Das kann ich nicht tun. Meine Aufgabe ist erfüllt", antwortet das Mädchen ruhig.'
-              '"Ich habe das Kind zur Welt gebracht. Was erwartest du noch von mir?" Du schaust dich um, doch das Mädchen ist bereits verschwunden. "Nun, jetzt musst du sie großziehen. Sie ist jetzt dein Kind, und du bist ihre Mutter" hörst du ihre Stimme noch nachklingen.'
-              '"Ich werde... Ich werde jetzt... Ich weiß nicht, was ich tun soll...", bringst du stockend hervor, während du versuchst, deine Gedanken zu sortieren. Du fühlst dich überwältigt von der plötzlichen Verantwortung für das neugeborene Kind, das nun hungrig an deiner Brust saugt.'
+'Du liegst erschöpft da, jeder Muskel in deinem Körper brennt vor Anstrengung, doch der Schmerz weicht allmählich einem seltsamen Gefühl der Erleichterung und Leere. Das Schreien eines Babys dringt an deine Ohren, und du hörst, wie das Mädchen beruhigend auf das Neugeborene einredet.'
+'"Gutes Mädchen," sagt sie sanft, während sie mit einer Hand über deinen Kopf streichelt. Ihre Berührung ist unerwartet sanft und tröstend, obwohl die Ereignisse dich noch immer überwältigen. "Aber sie hat Hunger," fügt sie hinzu und hebt das Baby vorsichtig an, bevor sie es behutsam auf deine Brust legt.'
+'Das kleine Wesen, das gerade aus dir geboren wurde, sucht instinktiv nach Nahrung, und die kleinen Lippen des Babys finden schnell deine Brustwarze. Ein sanfter Sog beginnt, und ein seltsames, fast surreal friedliches Gefühl durchströmt dich, während das Kind beginnt zu trinken.'
+'"Bitte, nimm dein Kind und geh", flüsterst du schwach. "Sie braucht ihre Mutter." Das Mädchen sieht dich an, ein sanftes Lächeln auf ihren Lippen, als wäre alles, was geschehen ist, ganz natürlich.'
+'"Nein, aber ich..." fängst du noch an, doch die Erschöpfung übermannt dich, und du gleitest in den Schlaf. Bevor du vollständig wegdriftest, hörst du noch die beruhigende Stimme des Mädchens: "Du hast es geschafft. Danke."
 
-              Act 'Ein letztes mal Pressen!':
-                minut += 5
-                *clr & cla
-                gs 'stat'
-                '<center><b><font color="maroon">Wald</font></b></center>'
-                '<center><img <<$set_imgh>> src="images\locations\city\street\clinic\birth\birth2.gif">'
-                'Völlig erschöpft und von Schweiß benetzt, liegst du regungslos im Bett und starrst an die Zimmerdecke. Das Schreien eines Babys dringt an deine Ohren, und du hörst, wie das Mädchen beruhigend auf das Neugeborene einredet. Trotz deiner Erschöpfung nimmst du das Baby instinktiv in deine Arme, als es behutsam auf deine Brust gelegt wird. "Sie hat Hunger", erklärt das Mädchen, und du nickst müde, während du das kleine Bündel an dich drückst.'
-                'Die kleinen Lippen des Babys finden schnell deine Brustwarze, und ein sanfter Sog beginnt. Ein überraschtes Stöhnen entweicht dir, als du das kribbelnde Gefühl spürst. "Bitte, nimm dein Kind und geh", flüsterst du schwach. "Das kann ich nicht tun. Meine Aufgabe ist erfüllt", antwortet das Mädchen ruhig.'
-                '"Ich habe das Kind zur Welt gebracht. Was erwartest du noch von mir?" Du schaust dich um, doch das Mädchen ist bereits verschwunden. "Nun, jetzt musst du sie großziehen. Sie ist jetzt dein Kind, und du bist ihre Mutter" hörst du ihre Stimme noch nachklingen.'
-                '"Ich werde... Ich werde jetzt... Ich weiß nicht, was ich tun soll...", bringst du stockend hervor, während du versuchst, deine Gedanken zu sortieren. Du fühlst dich überwältigt von der plötzlichen Verantwortung für das neugeborene Kind, das nun hungrig an deiner Brust saugt.'
-              end
-            end
-          end
-        end
-      end
-    end
-  end
-end
+
+'„Alana...“ Eine leise Stimme dringt in deinen tiefen Schlaf, doch du möchtest noch nicht aufwachen. „ALANA?!“ Die Stimme wird lauter, drängender, und reißt dich schließlich aus der Dunkelheit deines Schlafes. Dein Körper fühlt sich schwer und schwach an, und es dauert einen Moment, bis du begreifst, wo du bist.'
+'„Was für ein komischer Traum,“ denkst du dir im Halbschlaf. Doch die Realität zieht dich schnell zurück. „Alana, was ist passiert?“ hörst du die besorgte Stimme deiner Schwester, die voller Panik klingt. Ein kalter Wind streicht über deinen Körper, und du bemerkst plötzlich, dass dein Bett nass ist und etwas Schweres auf deiner Brust liegt.'
+'„Was ist passiert?“ murmelst du verwirrt, während du widerwillig die Augen öffnest und gegen das grelle Licht blinzelst. Deine Schwester kniet neben dir, ihre Augen weit aufgerissen vor Schock und Sorge. „Das... Baby?“ stammelt sie, ihre Stimme zitternd vor Unglauben.'
+'„Welches Baby?“ möchtest du fragen, doch die Worte bleiben dir im Hals stecken, während deine Augen auf das kleine Wesen gerichtet sind, das friedlich auf deiner Brust liegt. Dein Atem stockt, als die Erinnerungen an das, was geschehen ist, auf dich zurückprallen.'
+'Bevor du antworten kannst, wird die Tür aufgerissen, und eine aufgebrachte Stimme durchbricht die Stille. „Was ist denn hier für ein Tumult?!... Oh mein Gott!“ Frau Müller, die Hausmutter, steht fassungslos in der Tür und starrt dich mit weit aufgerissenen Augen an. Die Realität setzt plötzlich und gnadenlos ein.'
+
+'"Glückwunsch, es ist ein Mädchen," sagt Frau Müller liebevoll, während sie vorsichtig das Neugeborene aus deinen Armen nimmt. "Ich kümmere mich um sie... Geh du dich duschen," fügt sie hinzu, während sie das Baby sicher in ihren Armen wiegt.'
+'"Und du, Sahra," sagt Frau Müller bestimmt zu deiner Schwester, "mach hier sauber und bezieh das Bett neu." Sahra nickt stumm, noch immer sichtlich geschockt von den Ereignissen, aber sie macht sich daran, die Anweisungen auszuführen.'
+'Mit Mühe schaffst du es, dich langsam vom Bett zu erheben. Deine Beine sind wackelig, und jeder Schritt fühlt sich an wie ein Kraftakt. Dein Körper ist erschöpft und gezeichnet von der unerwarteten Geburt. Du bemerkst kaum die überraschten und entsetzten Blicke der anderen Mädchen, die dir im Flur begegnen, während du noch immer nackt und von der Geburt gezeichnet zum Gemeinschaftsbad gehst.'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
