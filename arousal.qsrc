@@ -1,1 +1,99 @@
+clit
+  (other/self/give)
+  finger/tongue
+  dick/dildo/strap
+  vibe
+vaginal
+  (other/self/give)
+  finger/cuni (tongue)
+  fist
+  dick/dildo/strap
+  vibe
+  trib
+anal
+  (other/self/give)
+  finger/rimming (tongue)
+  fist
+  dick/dildo/strap
+  vibe
+breasts
+  (other/self/give)
+  massage
+  suck
+dick
+  (other/give)
+  hj
+  bj/dildo_suck
+  titjob
+  footjob
+kiss
+voyeur
+  nudity - watching, usually as in spying on, erotic acts of others
+  erotic/sex
+foreplay
+
+
+
+
+
+
+
+
+
+
+
+
+!!-------------------Orgasm-------------------
+!!This is intended to be hidden and the stats and calculations should not appear in game.
+
+	if orgasm_flag['vaginal'] = 1 or orgasm_flag['anal'] = 1 or orgasm_flag['clit'] = 1 or orgasm_flag['masturbate'] = 1: orgasm_flag['trigger'] = 1
+
+	if orgasm_flag['trigger'] ! 0: nymphosex_flag = 1
+	orgasm_buildup += stim['total']
+	if orgasm_buildup < 0: orgasm_buildup = 0
+
+!! This is determining if Sveta will orgasm
+
+	! orgasm is not blocked
+	if $orgasm_or ! 'no':
+		!!Sveta is so pent up that she can cum with minimal stimulation
+		if orgasm_buildup >= 300 and pcs_horny >= 60:
+			gs 'orgasm', $ARGS[0]
+		! direct stimulation
+		elseif orgasm_flag['trigger'] ! 0:
+			!!Sveta is so horny that she can cum if directly stimulated
+			if orgasm_buildup >= 50 and pcs_horny >= 300:
+				gs 'orgasm', $ARGS[0]
+			elseif $orgasm_or = 'yes' or $orgasm_or = 'custom':
+				gs 'orgasm', $ARGS[0]
+			else
+				temp_rand = rand(1,100)
+				if orgasm_buildup >= (100 - pcs_horny/(2 + pcs_traits['easy_orgasms'])) and stim['total'] > 10 and temp_rand <= 20:
+					gs 'orgasm', $ARGS[0]
+				elseif orgasm_buildup >= (150 - pcs_horny/(2 + pcs_traits['easy_orgasms'])) and stim['total'] > 6 and temp_rand <= 50:
+					gs 'orgasm', $ARGS[0]
+				elseif orgasm_buildup >= (200 - pcs_horny/(2 + pcs_traits['easy_orgasms'])) and stim['total'] > 4:
+					gs 'orgasm', $ARGS[0]
+				end
+				killvar 'temp_rand'
+			end
+		end
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
