@@ -1,3 +1,164 @@
+$girl
+$boy
+
+stim['rand'] = rand(-8,8)
+
+clit
+	stim['g_time'] = 8
+	stim['g_max'] = -1
+
+	stim['b_time'] = 15
+	stim['b_max'] = 20
+
+	dick/dildo/strap
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0	
+	finger/tongue
+		stim['g_mod'] = rand(1,6)
+		stim['b_mod'] = 0
+  	vibe
+		stim['g_mod'] = rand(7,12)
+		stim['b_mod'] = 0
+	end
+trib
+	stim['g_time'] = 8
+	stim['g_max'] = -1
+
+	stim['b_time'] = 8
+	stim['b_max'] = -1	
+vaginal
+	stim['g_time'] = 14
+	stim['g_max'] = -1
+
+	stim['b_time'] = 15
+	stim['b_max'] = 20
+
+	dick/dildo/strap
+		stim['b_time'] = 7
+		stim['b_max'] = -1
+
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0
+	fist
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0
+	finger/cuni (tongue)
+		stim['g_mod'] = rand(1,6)
+		stim['b_mod'] = 0
+	vibe
+		stim['g_mod'] = rand(7,12)
+		stim['b_mod'] = 0
+	end
+anal
+	stim['g_time'] = 18
+	stim['g_max'] = -1
+
+	stim['b_time'] = 15
+	stim['b_max'] = 20
+
+	dick/dildo/strap
+		stim['b_time'] = 9
+		stim['b_max'] = -1
+
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0
+	fist
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0
+  	finger/rimming (tongue)
+		stim['g_mod'] = rand(1,6)
+		stim['b_mod'] = 0
+	vibe
+		stim['g_mod'] = rand(7,12)
+		stim['b_mod'] = 0
+	end
+ breasts
+	stim['g_time'] = 15
+
+	stim['b_time'] = 15
+	stim['b_max'] = 20
+
+	massage
+		stim['g_max'] = 60
+
+	suck
+		stim['g_max'] = 30
+
+	end
+
+	stim['g_mod'] = 0
+	stim['b_mod'] = 0
+dick
+	stim['g_time'] = 15
+	stim['g_max'] = 20
+
+	stim['b_time'] = 7
+	stim['b_max'] = -1
+
+	footjob
+		stim['b_mod'] = -rand(1,6)
+	titjob
+		stim['g_time'] = 15
+		stim['g_max'] = 50
+
+		stim['b_mod'] = 0
+	bj/dildo_suck
+		stim['b_mod'] = rand(1,6)
+	hj
+		stim['b_mod'] = rand(7,12)
+	end
+kiss
+	stim['g_time'] = 30
+	stim['g_max'] = 20
+
+	stim['b_time'] = 30
+	stim['b_max'] = 20
+		
+	stim['g_mod'] = 0
+	stim['b_mod'] = 0
+voyeur
+	stim['g_time'] = 20
+	stim['g_max'] = 20
+
+	stim['b_time'] = 0
+	stim['b_max'] = 0
+
+	nudity
+		stim['g_mod'] = 0
+		stim['b_mod'] = 0
+	 erotic
+		stim['g_mod'] =  rand(1,6)
+		stim['b_mod'] = 0
+	sex
+		stim['g_mod'] =  rand(7,12)
+		stim['b_mod'] = 0
+	foreplay
+		stim['g_mod'] =  rand(13,18)
+		stim['b_mod'] = 0
+
+
+
+
+
+stim['g_add'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 100
+stim['g_add'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 100
+
+if stim['g_max'] = -1 or stim['g_max'] < XXXXX:
+	npc_horny += stim['g_add']
+	if stim['g_max'] = -1 or stim['g_max'] > 30:  npc_oBuildup =+ stim['g_add']
+end
+
+if stim['b_max'] = -1 or stim['b_max'] < XXXXX:
+	npc_horny += stim['b_add']
+	if stim['b_max'] = -1 or stim['b_max'] > 30:  npc_oBuildup =+ stim['b_add']
+end
+
+
+
+
+
+
+
 clit
   (other/self/give)
   finger/tongue
