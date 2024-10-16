@@ -1,7 +1,22 @@
+if     $ARGS[0] = 'next':
+elseif $ARGS[0] ! 'end':
+	if     $ARGS[1] = 'clit':
+	elseif $ARGS[1] = 'trib':
+	elseif $ARGS[1] = 'vaginal':
+	elseif $ARGS[1] = 'anal':
+	elseif $ARGS[1] = 'breasts':
+	elseif $ARGS[1] = 'dick':
+	elseif $ARGS[1] = 'kiss':
+	elseif $ARGS[1] = 'voyeur':
+	end
+elseif $ARGS[0] = 'end':
+end
+
+
 $girl
 $boy
 
-stim['rand'] = rand(-8,8)
+stim['rand'] = rand(-5,5)
 
 clit
 	stim['g_time'] = 8
@@ -14,10 +29,10 @@ clit
 		stim['g_mod'] = 0
 		stim['b_mod'] = 0	
 	finger/tongue
-		stim['g_mod'] = rand(1,6)
+		stim['g_mod'] = rand(1,5)
 		stim['b_mod'] = 0
   	vibe
-		stim['g_mod'] = rand(7,12)
+		stim['g_mod'] = rand(6,10)
 		stim['b_mod'] = 0
 	end
 trib
@@ -43,10 +58,10 @@ vaginal
 		stim['g_mod'] = 0
 		stim['b_mod'] = 0
 	finger/cuni (tongue)
-		stim['g_mod'] = rand(1,6)
+		stim['g_mod'] = rand(1,5)
 		stim['b_mod'] = 0
 	vibe
-		stim['g_mod'] = rand(7,12)
+		stim['g_mod'] = rand(6,10)
 		stim['b_mod'] = 0
 	end
 anal
@@ -66,10 +81,10 @@ anal
 		stim['g_mod'] = 0
 		stim['b_mod'] = 0
   	finger/rimming (tongue)
-		stim['g_mod'] = rand(1,6)
+		stim['g_mod'] = rand(1,5)
 		stim['b_mod'] = 0
 	vibe
-		stim['g_mod'] = rand(7,12)
+		stim['g_mod'] = rand(6,10)
 		stim['b_mod'] = 0
 	end
  breasts
@@ -96,16 +111,16 @@ dick
 	stim['b_max'] = -1
 
 	footjob
-		stim['b_mod'] = -rand(1,6)
+		stim['b_mod'] = -rand(1,5)
 	titjob
 		stim['g_time'] = 15
 		stim['g_max'] = 50
 
 		stim['b_mod'] = 0
 	bj/dildo_suck
-		stim['b_mod'] = rand(1,6)
+		stim['b_mod'] = rand(1,5)
 	hj
-		stim['b_mod'] = rand(7,12)
+		stim['b_mod'] = rand(6,10)
 	end
 kiss
 	stim['g_time'] = 30
@@ -127,13 +142,13 @@ voyeur
 		stim['g_mod'] = 0
 		stim['b_mod'] = 0
 	 erotic
-		stim['g_mod'] =  rand(1,6)
+		stim['g_mod'] =  rand(1,5)
 		stim['b_mod'] = 0
 	sex
-		stim['g_mod'] =  rand(7,12)
+		stim['g_mod'] =  rand(6,10)
 		stim['b_mod'] = 0
 	foreplay
-		stim['g_mod'] =  rand(13,18)
+		stim['g_mod'] =  rand(11,15)
 		stim['b_mod'] = 0
 
 
