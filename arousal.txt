@@ -1,6 +1,75 @@
-if     $ARGS[0] = 'next':
+if     $ARGS[0] = 'calc':
+	:loop_calc
+	if $stim_npc[0] ! '':
+		if npc_vag[$stim_npc[0]] ! -1:
+			npc_horny[$stim_npc[0]] += stim_c[0]
+			stim_max = stim_c[0]
+			npc_horny[$stim_npc[0]] += stim_v[0]
+			if stim_max < stim_v[0]: stim_max = stim_v[0]
+			npc_horny[$stim_npc[0]] += stim_b[0] 
+			if stim_max < stim_b[0]: stim_max = stim_b[0]
+		end
+		if npc_dick[$stim_npc[0]] ! -1:
+			npc_horny[$stim_npc[0]] += stim_d[0]
+			if stim_max < stim_d[0]: stim_max = stim_d[0]
+
+		end
+		npc_horny[$stim_npc[0]] += stim_a[0]
+		if stim_max < stim_a[0]: stim_max = stim_a[0]
+
+		if stim_max < stim_e[0]:
+			npc_horny[$stim_npc[0]] += stim_e[0] - stim_max
+		end
+
+		killvar '$stim_npc', 0
+		killvar 'stim_c', 0
+		killvar 'stim_v', 0
+		killvar 'stim_a', 0
+		killvar 'stim_b', 0
+		killvar 'stim_d', 0
+		killvar 'stim_e', 0
+		killvar 'stim_max'
+
+		jump 'loop_calc'
+	end
 elseif $ARGS[0] ! 'end':
 	if     $ARGS[1] = 'clit':
+		if npc_
+		stim['g_time'] = 8
+		stim['g_max'] = -1
+		if     $ARGS[1] = 'dick' or $ARGS[1] = 'dildo' or $ARGS[1] = 'strap':
+			stim['g_mod'] = 0
+		elseif $ARGS[1] = 'finger' or $ARGS[1] = 'tongue':
+			stim['g_mod'] = rand(1,5)
+		elseif $ARGS[1] = 'vibe':
+			stim['g_mod'] = rand(6,10)
+		end
+
+		
+		
+
+	dick/dildo/strap
+		stim['b_mod'] = 0	
+	finger/tongue
+		stim['g_mod'] = rand(1,5)
+		stim['b_mod'] = 0
+  	vibe
+		stim['b_mod'] = 0
+	end
+
+
+	
+		stim['b_time'] = 15
+		stim['b_max'] = 20
+		if     $ARGS[1] = 'dick':
+			stim['g_mod'] = 0
+			stim['b_mod'] = 0
+			if npc_dick[$ARGS[1]] ! -1:
+				stim['b_time'] = 100
+				stim['b_max'] = -1
+
+			end
+		elseif 
 	elseif $ARGS[1] = 'trib':
 	elseif $ARGS[1] = 'vaginal':
 	elseif $ARGS[1] = 'anal':
