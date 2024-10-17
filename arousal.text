@@ -259,6 +259,29 @@ elseif $ARGS[0] ! 'end':
 		if stim_e[boy_id]  > stim['temp']: stim_e[boy_id]  = stim['temp']
 	end
 elseif $ARGS[0] = 'end':
+	if stim['lesbian'] = 1:             stat['lesbian'] += 1
+	if stim['hidden_lesbian'] = 1:      stat['hidden_lesbian'] += 1
+	if stim['gang'] = 1:                stat['gang'] += 1
+	if stim['hidden_gang'] = 1:         stat['hidden_gang'] += 1
+	if stim['gloryhole'] = 1:           stat['gloryhole'] += 1
+	if stim['hidden_gloryhole'] = 1:    stat['hidden_gloryhole'] += 1
+	if stim['rape'] = 1:                stat['rape'] += 1
+	if stim['hidden_rape'] = 1:         stat['hidden_rape'] += 1
+	if stim['prostitution'] = 1:        stat['slutty'] += 1
+	if stim['hidden_prostitution'] = 1: stat['hidden_slutty'] += 1
+	if stim['masturbate'] = 1:          stat['mast'] += 1
+
+	if npc_sexual[$boy] = 0 and (orgasm_flag['clit'] + orgasm_flag['vaginal'] + orgasm_flag['anal'] + count['bj'] + count['titjob'] + stim_les) > 0:
+		npc_sexual[$boy] = 1
+		stat['sexual_partners'] += 1
+		if npc_gender[$boy] = 0:
+			stat['male_sexual_partners'] += 1
+		elseif npc_gender[$boy] = 1:
+			stat['female_sexual_partners'] += 1
+		else
+			stat['herm_sexual_partners'] += 1
+		end
+	end
 end
 
 --- arousal ---------------------------------
