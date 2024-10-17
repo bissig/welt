@@ -1,6 +1,7 @@
 # arousal
 
 !! $ARGS[0] = Typ: 
+!                vaginal_fist     anal_fist <---- fehlt
 !  clit_dick     vaginal_dick     anal_dick
 !  clit_dildo    vaginal_dildo    anal_dildo
 !  clit_strap    vaginal_strap    anal_strap
@@ -71,7 +72,7 @@ if     $ARGS[0] = 'calc':
 
 	if stim_max < stim_e[0] and npc_horny[$stim_npc[0]] < 300:
 		npc_horny[$stim_npc[0]] += stim_e[0] - stim_max
-		if npc_horny[$stim_npc[0]] > 300: npc_horny[$stim_npc[0]] = 300
+		inpc_horny[$stim_npc[0]] > 300: npc_horny[$stim_npc[0]] = 300
 	end
 
 	killvar '$stim_npc', 0
@@ -297,7 +298,7 @@ elseif $ARGS[0] ! 'end':
 	end
 
 	if $ARGS[1] = '1' or $ARGS[2] = '1':
-		if $ARGS[0] ! 'kiss' and $ARGS[0] ! 'voyeur':
+		if $ARGS[0] ! 'kiss' and $ARGS[0] ! 'voyeur' and  $ARGS[2] ! '':
 			if npc_vag[$ARGS[1]] ! -1 and npc_vag[$ARGS[2]] ! -1: stim['lesbian'] = 1
 
 			if $ARGS[1] = '1':
@@ -353,38 +354,36 @@ elseif $ARGS[0] ! 'end':
 					end
 				end
 			end
-
-			!act-Typ
-			if arrpos('$ARGS', 'hidden_sex')   => 0: stim['hidden_sex'] = 1
-			if arrpos('$ARGS', 'gang')         => 0: stim['gang'] = 1
-			if arrpos('$ARGS', 'gloryhole')    => 0: stim['gloryhole'] = 1
-			if arrpos('$ARGS', 'rape')         => 0: stim['rape'] = 1
-			if arrpos('$ARGS', 'prostitution') => 0: stim['prostitution'] = 1
-			if arrpos('$ARGS', 'masturbate')   => 0: stim['masturbate'] = 1
-
-			!fetish
-			if arrpos('$ARGS', 'sub')    => 0:
-stim['sub'] += 1
-			if arrpos('$ARGS', 'dom')    => 0: stim['dom'] += 1
-			if arrpos('$ARGS', 'incest') => 0: stim['incest'] = 1
-			if arrpos('$ARGS', 'beast')  => 0: stim['beast'] = 1
 		end
 
+		!act-Typ
+		if arrpos('$ARGS', 'hidden_sex')   => 0: stim['hidden_sex'] = 1
+		if arrpos('$ARGS', 'gang')         => 0: stim['gang'] = 1
+		if arrpos('$ARGS', 'gloryhole')    => 0: stim['gloryhole'] = 1
+		if arrpos('$ARGS', 'rape')         => 0: stim['rape'] = 1
+		if arrpos('$ARGS', 'prostitution') => 0: stim['prostitution'] = 1
+		if arrpos('$ARGS', 'masturbate')   => 0: stim['masturbate'] = 1
+
+		!fetish
 		stim['kink'] = 0
 		stim['kink_count'] = 0
-
-		if     arrpos('$ARGS', 'sub')    => 0::
+		if arrpos('$ARGS', 'sub')    => 0:
+			stim['sub'] += 1
 			stim['kink'] -= exp['sub-dom']
 			stim['kink_count'] += 1
-		elseif arrpos('$ARGS', 'dom')    => 0:
+		end
+		if arrpos('$ARGS', 'dom')    => 0:
+			stim['dom'] += 1
 			stim['kink'] += exp['sub-dom']
 			stim['kink_count'] += 1
 		end
-		if temp['incest'] = 1:
+		if arrpos('$ARGS', 'incest') => 0:
+			stim['incest'] = 1
 			stim['kink'] += exp['incest']
 			stim['kink_count'] += 1
 		end
-		if temp['beast'] = 1:
+		if arrpos('$ARGS', 'beast')  => 0:
+			stim['beast'] = 1
 			stim['kink'] += exp['beast']
 			stim['kink_count'] += 1
 		end
