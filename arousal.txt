@@ -1,0 +1,445 @@
+# arousal
+
+!! $ARGS[0] = Typ: 
+!                vaginal_fist     anal_fist <---- fehlt
+!  clit_dick     vaginal_dick     anal_dick
+!  clit_dildo    vaginal_dildo    anal_dildo
+!  clit_strap    vaginal_strap    anal_strap
+!  clit_finger   vaginal_finger   anal_finger
+!  clit_tongue   vaginal_tongue   anal_tongue
+!  clit_vibe     vaginal_vibe     anal_vibe
+!--------
+!  trib
+!--------
+!  breasts_massage
+!  breasts_suck
+!--------
+!  dick_fj
+!  dick_tj
+!  dick_bj
+!  dick_hj
+!--------
+!  kiss
+!--------
+!  voyeur_nudity
+!  voyeur_erotic
+!  voyeur_sex
+!--------
+!  foreplay
+!--------
+!! $ARGS[1] = girl
+!! $ARGS[2] = boy
+!! $ARGS[3-8] = act-Typ oder fetish
+!            act-Typ
+!                /  hidden_sex
+!  --------------/--------------
+!  gang          /  hidden_gang
+!  gloryhole     /  hidden_gloryhole
+!  rape          /  hidden_rape
+!  prostitution  /  hidden_slutty
+!  -----------------------------
+!            fetish
+!  sub
+!  dom
+!  incest
+!  beast  
+
+if     $ARGS[0] = 'calc':
+	:loop_calc
+	if npc_vag[$stim_npc[0]] ! -1:
+		npc_orgasm_buildup[$stim_npc[0]] += stim_c[0]
+		npc_horny[$stim_npc[0]] += stim_c[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		stim_max = stim_c[0]
+
+		npc_orgasm_buildup[$stim_npc[0]] += stim_v[0]
+		npc_horny[$stim_npc[0]] += stim_v[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_v[0]: stim_max = stim_v[0]
+
+		npc_orgasm_buildup[$stim_npc[0]] += stim_b[0]
+		npc_horny[$stim_npc[0]] += stim_b[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_b[0]: stim_max = stim_b[0]
+	end
+
+	if npc_dick[$stim_npc[0]] ! -1:
+		npc_orgasm_buildup[$stim_npc[0]] += stim_d[0]
+		npc_horny[$stim_npc[0]] += stim_d[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_d[0]: stim_max = stim_d[0]
+	end
+
+	npc_orgasm_buildup[$stim_npc[0]] += stim_a[0]
+	npc_horny[$stim_npc[0]] += stim_a[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+	if stim_max < stim_a[0]: stim_max = stim_a[0]
+
+	if stim_max < stim_e[0] and npc_horny[$stim_npc[0]] < 300:
+		npc_horny[$stim_npc[0]] += stim_e[0] - stim_max
+		inpc_horny[$stim_npc[0]] > 300: npc_horny[$stim_npc[0]] = 300
+	end
+
+	killvar '$stim_npc', 0
+	killvar 'stim_c', 0
+	killvar 'stim_v', 0
+	killvar 'stim_a', 0
+	killvar 'stim_b', 0
+	killvar 'stim_d', 0
+	killvar 'stim_e', 0
+	killvar 'stim_max'
+
+	if $stim_npc[0] ! '': jump 'loop_calc'
+elseif $ARGS[0] ! 'end':
+	girl_id = arrpos('$stim_npc', $ARGS[1])
+	if girl_id = -1:
+		girl_id = arrsize('$stim_npc')
+		$stim_npc[girl_id] = $ARGS[1]
+	end
+	boy_id = arrpos('$stim_npc', $ARGS[2])
+	if boy_id = -1:
+		boy_id = arrsize('$stim_npc')
+		$stim_npc[boy_id] = $ARGS[2]
+	end
+
+	stim['rand'] = rand(-5,5)
+	if     $mid($ARGS[0],1,4) = 'clit':
+
+		if npc_vag[$ARGS[1]] ! -1:
+			stim['g_time'] = 8
+			if     $mid($ARGS[0],6,9)  = 'dick'   or $mid($ARGS[0],6,10) = 'dildo' or $mid($ARGS[0],6,10) = 'strap':
+				stim['g_mod'] = 0
+			elseif $mid($ARGS[0],6,11) = 'finger' or $mid($ARGS[0],6,11) = 'tongue':
+				stim['g_mod'] = rand(1,5)
+			elseif $mid($ARGS[0],6,9)  = 'vibe':
+				stim['g_mod'] = rand(6,10)
+			end
+			stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+			if stim_c[girl_id] < stim['temp']: stim_c[girl_id] = stim['temp']
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[girl] = -1'
+		end
+
+		if npc_dick[$ARGS[2]] ! -1 and $mid($ARGS[0],6,9) = 'dick':
+			stim['b_time'] = 15
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_d[boy_id] < stim['temp']: stim_d[boy_id] = stim['temp']
+		else
+			stim['b_time'] = 20
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_e[boy_id] < stim['temp']: stim_e[boy_id] = stim['temp']
+		end
+	elseif $mid($ARGS[0],1,4) = 'trib':
+		if npc_vag[$ARGS[1]] ! -1:
+			stim['g_time'] = 8
+			stim['g_mod'] = 0
+
+			stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+			if stim_c[girl_id] < stim['temp']: stim_c[girl_id] = stim['temp']
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[girl] = -1'
+		end
+
+		if npc_vag[$ARGS[2]] ! -1:
+			stim['b_time'] = 8
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_c[boy_id] < stim['temp']: stim_c[boy_id] = stim['temp']
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[boy] = -1'
+		end
+	elseif $mid($ARGS[0],1,7) = 'vaginal':
+		if npc_vag[$ARGS[1]] ! -1:
+			stim['g_time'] = 10
+			if     $mid($ARGS[0],9,12) = 'dick'   or $mid($ARGS[0],9,13) = 'dildo' or $mid($ARGS[0],9,13) = 'strap':
+				stim['g_mod'] = 0
+			elseif $mid($ARGS[0],9,14) = 'finger' or $mid($ARGS[0],9,14) = 'tongue':
+				stim['g_mod'] = rand(1,5)
+			elseif $mid($ARGS[0],9,12) = 'vibe':
+				stim['g_mod'] = rand(6,10)
+			end
+			stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+			if stim_v[girl_id] < stim['temp']: stim_v[girl_id] = stim['temp']
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[girl] = -1'
+		end
+
+		if npc_dick[$ARGS[2]] ! -1 and $mid($ARGS[0],9,12) = 'dick':
+			stim['b_time'] = 6
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_d[boy_id] < stim['temp']: stim_d[boy_id] = stim['temp']
+		else
+			stim['b_time'] = 20
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_e[boy_id] < stim['temp']: stim_e[boy_id] = stim['temp']
+		end
+	elseif $mid($ARGS[0],1,4) = 'anal':
+		stim['g_time'] = 14
+		if     $mid($ARGS[0],6,9) = 'dick' or $mid($ARGS[0],6,10) = 'dildo' or $mid($ARGS[0],6,10) = 'strap':
+			stim['g_mod'] = 0
+		elseif $mid($ARGS[0],6,11) = 'finger' or $mid($ARGS[0],6,11) = 'tongue':
+			stim['g_mod'] = rand(1,5)
+		elseif $mid($ARGS[0],6,9) = 'vibe':
+			stim['g_mod'] = rand(6,10)
+		end
+		stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+		if stim_a[girl_id] < stim['temp']: stim_a[girl_id] = stim['temp']
+
+
+		if npc_dick[$ARGS[2]] ! -1 and $mid($ARGS[0],6,9) = 'dick':
+			stim['b_time'] = 6
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_d[boy_id] < stim['temp']: stim_d[boy_id] = stim['temp']
+		else
+			stim['b_time'] = 20
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_e[boy_id] < stim['temp']: stim_e[boy_id] = stim['temp']
+		end
+	elseif $mid($ARGS[0],1,7) = 'breasts':
+		stim['g_time'] = 15
+		if npc_vag[$ARGS[1]] ! -1:
+			if     $mid($ARGS[0],9,15) = 'massage':
+				stim['g_mod'] = 0
+			elseif $mid($ARGS[0],9,12) = 'suck':
+				stim['g_mod'] = rand(-10,5)
+			end
+			stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+			if stim_b[girl_id] < stim['temp']: stim_b[girl_id] = stim['temp']
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[girl] = -1'
+		end
+
+		stim['b_time'] = 20
+		stim['b_mod'] = 0
+
+		stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+		if stim_e[boy_id] < stim['temp']: stim_e[boy_id] = stim['temp']
+
+		stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+	elseif $mid($ARGS[0],1,4) = 'dick':
+		if npc_vag[$ARGS[1]] ! -1:
+			if $mid($ARGS[0],6,7) = 'tj':
+				stim['g_time'] = 20
+				stim['g_mod'] = 0
+
+				stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+				if stim_b[girl_id] < stim['temp']: stim_b[girl_id] = stim['temp']
+			else
+				stim['g_time'] = 20
+				stim['g_mod'] = 0
+
+				stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+				if stim_e[girl_id] < stim['temp']: stim_e[girl_id] = stim['temp']
+			end
+		else
+			msg 'ERROR:<br>arousal, $ARGS[0], $ARGS[1], $ARGS[2], $ARGS[3], $ARGS[4], $ARGS[5], $ARGS[6], $ARGS[7], $ARGS[8]<br>npc_vag[girl] = -1'
+		end
+
+		if npc_dick[$ARGS[2]] ! -1:
+			stim['g_time'] = 7
+			if     $mid($ARGS[0],6,7) = 'fj':
+				stim['b_mod'] = -rand(1,5)
+			elseif $mid($ARGS[0],6,7) = 'tj':
+				stim['b_mod'] = 0
+			elseif $mid($ARGS[0],6,7) = 'bj':
+				stim['b_mod'] =  rand(1,5)
+			elseif $mid($ARGS[0],6,7) = 'hj':
+				stim['b_mod'] = rand(6,10)
+			end
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_d[boy_id] < stim['temp']: stim_d[boy_id] = stim['temp']
+		else
+			stim['b_time'] = 20
+			stim['b_mod'] = 0
+
+			stim['temp'] = (100 / stim['b_time']) * (100 + stim['rand'] + stim['b_mod']) / 10
+			if stim_e[boy_id] < stim['temp']: stim_e[boy_id] = stim['temp']
+		end
+	elseif $mid($ARGS[0],1,4) = 'kiss':
+		stim['g_time'] = 30
+		stim['g_mod'] = 0
+
+		stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+		if stim_e[girl_id] < stim['temp']: stim_e[girl_id] = stim['temp']
+		if stim_e[boy_id]  > stim['temp']: stim_e[boy_id]  = stim['temp']
+	elseif $mid($ARGS[0],1,6) = 'voyeur':
+		stim['g_time'] = 30
+		stim['b_time'] = 30
+
+		if     $mid($ARGS[0],8,13) = 'nudity':
+			stim['g_mod'] = 0
+		elseif $mid($ARGS[0],8,10) = 'erotic':
+			stim['g_mod'] = rand(1,5)
+		elseif $mid($ARGS[0],8,10) = 'sex':
+			stim['g_mod'] = rand(6,10)
+		end
+
+		stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+		if stim_e[girl_id] < stim['temp']: stim_e[girl_id] = stim['temp']
+		if stim_e[boy_id]  > stim['temp']: stim_e[boy_id]  = stim['temp']
+	elseif $mid($ARGS[0],1,8) = 'foreplay':
+		stim['g_time'] = 20
+		stim['g_mod'] = 0
+
+		stim['b_time'] = 20
+		stim['b_mod'] = 0
+
+		stim['temp'] = (100 / stim['g_time']) * (100 + stim['rand'] + stim['g_mod']) / 10
+		if stim_e[girl_id] < stim['temp']: stim_e[girl_id] = stim['temp']
+		if stim_e[boy_id]  > stim['temp']: stim_e[boy_id]  = stim['temp']
+	end
+
+	if $ARGS[1] = '1' or $ARGS[2] = '1':
+		if $ARGS[0] ! 'kiss' and $ARGS[0] ! 'voyeur' and  $ARGS[2] ! '':
+			if npc_vag[$ARGS[1]] ! -1 and npc_vag[$ARGS[2]] ! -1: stim['lesbian'] = 1
+
+			if $ARGS[1] = '1':
+				if     npc_sex[$ARGS[2]] < 2 and ($ARGS[0] = 'trib' or ($mid($ARGS[0],1,7) = 'vaginal' and ($mid($ARGS[0],9,12) = 'dick' or $mid($ARGS[0],9,13) = 'dildo' or $mid($ARGS[0],9,13) = 'strap'))):
+					npc_sex[$ARGS[2]] = 2
+					if npc_sex[$ARGS[2]] = 1: stat['sexual_partners'] -= 1
+					stat['vaginal_partners'] += 1
+					if     npc_vag[$ARGS[2]] = -1:
+						if npc_sex[$ARGS[2]] = 1:stat['female_sexual_partners'] -= 1
+						stat['women_fucked'] += 1
+					elseif npc_dick[$ARGS[2]] = -1:
+						if npc_sex[$ARGS[2]] = 1:stat['male_sexual_partners'] -= 1
+						stat['men_fucked'] += 1
+					else
+						if npc_sex[$ARGS[2]] = 1:stat['herm_sexual_partners'] -= 1
+						stat['herm_fucked'] += 1
+					end
+				elseif npc_sex[$ARGS[2]] < 1:
+					npc_sex[$ARGS[2]] = 1
+					stat['sexual_partners'] += 1
+					if     npc_vag[$ARGS[2]] = -1:
+						stat['female_sexual_partners'] += 1
+					elseif npc_dick[$ARGS[2]] = -1:
+						stat['male_sexual_partners'] += 1
+					else
+						stat['herm_sexual_partners'] += 1
+					end
+				end
+			elseif $ARGS[2] = '1':
+				if     npc_sex[$ARGS[1]] < 2 and ($ARGS[0] = 'trib' or ($mid($ARGS[0],1,7) = 'vaginal' and ($mid($ARGS[0],9,12) = 'dick' or $mid($ARGS[0],9,13) = 'dildo' or $mid($ARGS[0],9,13) = 'strap'))):
+					npc_sex[$ARGS[1]] = 2
+					if npc_sex[$ARGS[1]] = 1: stat['sexual_partners'] -= 1
+					stat['vaginal_partners'] += 1
+					if     npc_vag[$ARGS[1]] = -1:
+						if npc_sex[$ARGS[1]] = 1:stat['female_sexual_partners'] -= 1
+						stat['women_fucked'] += 1
+					elseif npc_dick[$ARGS[1]] = -1:
+						if npc_sex[$ARGS[1]] = 1:stat['male_sexual_partners'] -= 1
+						stat['men_fucked'] += 1
+					else
+						if npc_sex[$ARGS[1]] = 1:stat['herm_sexual_partners'] -= 1
+						stat['herm_fucked'] += 1
+					end
+				elseif npc_sex[$ARGS[1]] < 1:
+					npc_sex[$ARGS[1]] = 1
+					stat['sexual_partners'] += 1
+					if     npc_vag[$ARGS[1]] = -1:
+						stat['female_sexual_partners'] += 1
+					elseif npc_dick[$ARGS[1]] = -1:
+						stat['male_sexual_partners'] += 1
+					else
+						stat['herm_sexual_partners'] += 1
+					end
+				end
+			end
+		end
+
+		!act-Typ
+		if arrpos('$ARGS', 'hidden_sex')   => 0: stim['hidden_sex'] = 1
+		if arrpos('$ARGS', 'gang')         => 0: stim['gang'] = 1
+		if arrpos('$ARGS', 'gloryhole')    => 0: stim['gloryhole'] = 1
+		if arrpos('$ARGS', 'rape')         => 0: stim['rape'] = 1
+		if arrpos('$ARGS', 'prostitution') => 0: stim['prostitution'] = 1
+		if arrpos('$ARGS', 'masturbate')   => 0: stim['masturbate'] = 1
+
+		!fetish
+		stim['kink'] = 0
+		stim['kink_count'] = 0
+		if arrpos('$ARGS', 'sub')    => 0:
+			stim['sub'] += 1
+			stim['kink'] -= exp['sub-dom']
+			stim['kink_count'] += 1
+		end
+		if arrpos('$ARGS', 'dom')    => 0:
+			stim['dom'] += 1
+			stim['kink'] += exp['sub-dom']
+			stim['kink_count'] += 1
+		end
+		if arrpos('$ARGS', 'incest') => 0:
+			stim['incest'] = 1
+			stim['kink'] += exp['incest']
+			stim['kink_count'] += 1
+		end
+		if arrpos('$ARGS', 'beast')  => 0:
+			stim['beast'] = 1
+			stim['kink'] += exp['beast']
+			stim['kink_count'] += 1
+		end
+		stim['kink'] = (stim['kink'] / stim['kink_count']) / 10
+
+		if     $ARGS[1] = '1':
+			stim_c[girl_id] = stim_c[girl_id] * (100 + exp['sub-dom']) / 100
+			stim_v[girl_id] = stim_v[girl_id] * (100 + exp['sub-dom']) / 100
+			stim_a[girl_id] = stim_a[girl_id] * (100 + exp['sub-dom']) / 100
+			stim_b[girl_id] = stim_b[girl_id] * (100 + exp['sub-dom']) / 100
+			stim_d[girl_id] = stim_d[girl_id] * (100 + exp['sub-dom']) / 100
+			stim_e[girl_id] = stim_e[girl_id] * (100 + exp['sub-dom']) / 100
+		elseif $ARGS[2] = '1':
+			stim_c[boy_id] = stim_c[boy_id] * (100 + exp['sub-dom']) / 100
+			stim_v[boy_id] = stim_v[boy_id] * (100 + exp['sub-dom']) / 100
+			stim_a[boy_id] = stim_a[boy_id] * (100 + exp['sub-dom']) / 100
+			stim_b[boy_id] = stim_b[boy_id] * (100 + exp['sub-dom']) / 100
+			stim_d[boy_id] = stim_d[boy_id] * (100 + exp['sub-dom']) / 100
+			stim_e[boy_id] = stim_e[boy_id] * (100 + exp['sub-dom']) / 100
+		end
+	end
+elseif $ARGS[0] = 'end':
+	if stim['hidden_sex'] = 1:
+		if stim['lesbian'] = 1:             stat['hidden_lesbian'] += 1
+		if stim['gang'] = 1:                stat['hidden_gang'] += 1
+		if stim['gloryhole'] = 1:           stat['hidden_gloryhole'] += 1
+		if stim['rape'] = 1:                stat['hidden_rape'] += 1
+		if stim['prostitution'] = 1:        stat['hidden_slutty'] += 1
+	else
+		if stim['lesbian'] = 1:             stat['lesbian'] += 1
+		if stim['gang'] = 1:                stat['gang'] += 1
+		if stim['gloryhole'] = 1:           stat['gloryhole'] += 1
+		if stim['hidden_gloryhole'] = 1:    stat['hidden_gloryhole'] += 1
+		if stim['prostitution'] = 1:        stat['slutty'] += 1
+		if stim['masturbate'] = 1:          stat['mast'] += 1
+	end
+
+	if stim['sub'] => 5 or stim['dom'] => 5:
+		if     stim['sub'] > stim['dom']:
+			exp['sub-dom'] -= stim['sub'] / 2
+			if exp['sub-dom'] < -100: exp['sub-dom'] = -100
+		elseif stim['dom'] > stim['sub']:
+			exp['sub-dom'] += stim['dom'] / 2
+			if exp['sub-dom'] > 100: exp['sub-dom'] = 100
+		end
+	end
+	if stim['incest'] = 1:
+			exp['incest'] += stim['dom'] / 2
+			if exp['incest'] > 100: exp['incest'] = 100
+	end
+	if stim['beast'] = 1:
+			exp['beast'] += stim['dom'] / 2
+			if exp['beast'] > 100: exp['beast'] = 100
+	end
+
+	killvar 'stim'
+end
+
+--- arousal ---------------------------------
