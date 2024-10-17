@@ -45,49 +45,45 @@
 
 if     $ARGS[0] = 'calc':
 	:loop_calc
-	if $stim_npc[0] ! '':
-		if npc_vag[$stim_npc[0]] ! -1:
-			npc_horny[$stim_npc[0]] += stim_c[0]
-      npc_orgasm_buildup[$stim_npc[0]] += stim_c[0]
-			stim_max = stim_c[0]
+	if npc_vag[$stim_npc[0]] ! -1:
+		npc_orgasm_buildup[$stim_npc[0]] += stim_c[0]
+		npc_horny[$stim_npc[0]] += stim_c[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		stim_max = stim_c[0]
 
-			npc_horny[$stim_npc[0]] += stim_v[0]
-      npc_orgasm_buildup[$stim_npc[0]] += stim_v[0]
+		npc_orgasm_buildup[$stim_npc[0]] += stim_v[0]
+		npc_horny[$stim_npc[0]] += stim_v[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_v[0]: stim_max = stim_v[0]
 
-			if stim_max < stim_v[0]: stim_max = stim_v[0]
-
-			npc_horny[$stim_npc[0]] += stim_b[0]
-      npc_orgasm_buildup[$stim_npc[0]] += stim_b[0]
-			if stim_max < stim_b[0]: stim_max = stim_b[0]
-		end
-		if npc_dick[$stim_npc[0]] ! -1:
-			npc_horny[$stim_npc[0]] += stim_d[0]
-      npc_orgasm_buildup[$stim_npc[0]] += stim_d[0]
-			if stim_max < stim_d[0]: stim_max = stim_d[0]
-		end
-		npc_horny[$stim_npc[0]] += stim_a[0]
-    npc_orgasm_buildup[$stim_npc[0]] += stim_a[0]
-		if stim_max < stim_a[0]: stim_max = stim_a[0]
-
-		if stim_max < stim_e[0] and npc_horny[$stim_npc[0]] < 300:
-			npc_horny[$stim_npc[0]] += stim_e[0] - stim_max
-			if npc_horny[$stim_npc[0]] > 300: npc_horny[$stim_npc[0]] = 300
-		end
-
-		killvar '$stim_npc', 0
-		killvar 'stim_c', 0
-		killvar 'stim_v', 0
-		killvar 'stim_a', 0
-		killvar 'stim_b', 0
-		killvar 'stim_d', 0
-		killvar 'stim_e', 0
-		killvar 'stim_max'
-
-		jump 'loop_calc'
+		npc_orgasm_buildup[$stim_npc[0]] += stim_b[0]
+		npc_horny[$stim_npc[0]] += stim_b[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_b[0]: stim_max = stim_b[0]
 	end
 
+	if npc_dick[$stim_npc[0]] ! -1:
+		npc_orgasm_buildup[$stim_npc[0]] += stim_d[0]
+		npc_horny[$stim_npc[0]] += stim_d[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+		if stim_max < stim_d[0]: stim_max = stim_d[0]
+	end
 
-	
+	npc_orgasm_buildup[$stim_npc[0]] += stim_a[0]
+	npc_horny[$stim_npc[0]] += stim_a[0] * (100 + max(0,npc_orgasm_buildup[$stim_npc[0]]-100) / 2) / 100
+	if stim_max < stim_a[0]: stim_max = stim_a[0]
+
+	if stim_max < stim_e[0] and npc_horny[$stim_npc[0]] < 300:
+		npc_horny[$stim_npc[0]] += stim_e[0] - stim_max
+		if npc_horny[$stim_npc[0]] > 300: npc_horny[$stim_npc[0]] = 300
+	end
+
+	killvar '$stim_npc', 0
+	killvar 'stim_c', 0
+	killvar 'stim_v', 0
+	killvar 'stim_a', 0
+	killvar 'stim_b', 0
+	killvar 'stim_d', 0
+	killvar 'stim_e', 0
+	killvar 'stim_max'
+
+	if $stim_npc[0] ! '': jump 'loop_calc'
 elseif $ARGS[0] ! 'end':
 	girl_id = arrpos('$stim_npc', $ARGS[1])
 	if girl_id = -1:
@@ -300,7 +296,7 @@ elseif $ARGS[0] ! 'end':
 		if stim_e[boy_id]  > stim['temp']: stim_e[boy_id]  = stim['temp']
 	end
 
-	if ($ARGS[1] = '1' or $ARGS[2] = '1') and $ARGS[2] ! '':
+	if $ARGS[1] = '1' or $ARGS[2] = '1':
 		if $ARGS[0] ! 'kiss' and $ARGS[0] ! 'voyeur':
 			if npc_vag[$ARGS[1]] ! -1 and npc_vag[$ARGS[2]] ! -1: stim['lesbian'] = 1
 
@@ -358,52 +354,29 @@ elseif $ARGS[0] ! 'end':
 				end
 			end
 
-			i = 3
-			:stimloop
-			if $ARGS[i] ! '':
-				!act-Typ
-				if     $ARGS[i] = 'hidden_sex':
-					stim['hidden_sex'] = 1
-				elseif $ARGS[i] = 'gang':
-					stim['gang'] = 1
-				elseif $ARGS[i] = 'gloryhole':
-					stim['gang'] = 1
-				elseif $ARGS[i] = 'rape':
-					stim['gang'] = 1
-				elseif $ARGS[i] = 'prostitution':
-					stim['gang'] = 1
-				elseif $ARGS[i] = 'masturbate':
-					stim['gang'] = 1
-				elseif $ARGS[i] = 'gang':
-					stim['gang'] = 1
-				!fetish
-				elseif $ARGS[i] = 'sub':
-					stim['sub'] += 1
-					temp['sub'] = 1
-				elseif $ARGS[i] = 'dom':
-					stim['dom'] += 1
-					temp['sub'] = 1
-				elseif $ARGS[i] = 'incest':
-					stim['incest'] = 1
-					temp['incest'] = 1
-				elseif $ARGS[i] = 'beast':
-					stim['beast'] = 1
-					temp['beast'] = 1
+			!act-Typ
+			if arrpos('$ARGS', 'hidden_sex')   => 0: stim['hidden_sex'] = 1
+			if arrpos('$ARGS', 'gang')         => 0: stim['gang'] = 1
+			if arrpos('$ARGS', 'gloryhole')    => 0: stim['gloryhole'] = 1
+			if arrpos('$ARGS', 'rape')         => 0: stim['rape'] = 1
+			if arrpos('$ARGS', 'prostitution') => 0: stim['prostitution'] = 1
+			if arrpos('$ARGS', 'masturbate')   => 0: stim['masturbate'] = 1
 
-				end
-
-				i += 1
-				jump 'stimloop'	
-			end
+			!fetish
+			if arrpos('$ARGS', 'sub')    => 0:
+stim['sub'] += 1
+			if arrpos('$ARGS', 'dom')    => 0: stim['dom'] += 1
+			if arrpos('$ARGS', 'incest') => 0: stim['incest'] = 1
+			if arrpos('$ARGS', 'beast')  => 0: stim['beast'] = 1
 		end
 
 		stim['kink'] = 0
 		stim['kink_count'] = 0
 
-		if     temp['sub'] = 1:
+		if     arrpos('$ARGS', 'sub')    => 0::
 			stim['kink'] -= exp['sub-dom']
 			stim['kink_count'] += 1
-		elseif temp['dom'] = 1:
+		elseif arrpos('$ARGS', 'dom')    => 0:
 			stim['kink'] += exp['sub-dom']
 			stim['kink_count'] += 1
 		end
