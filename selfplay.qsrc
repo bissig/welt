@@ -1,0 +1,1326 @@
+# selfplay
+
+$d_self_ass_fingering = {
+
+}
+
+if $ARGS[0] = 'start':
+	if mastrOnce = 0:
+		mastrOnce = 1
+		org_temp = orgasm
+		if pcs_inhib < 30:inhib_exp += rand(1,3)
+	end
+
+	if org_temp < orgasm:
+		act 'Finish': gt 'selfplay', 'stop'
+	exit
+	end
+	gs 'stat'
+
+	if $loc = 'bedrPar' or $loc = 'gad_gpbarn': '<center><img <<$set_imgh>> src="images/shared/sex/mast/start.jpg"></center>'
+	if $loc = 'vanrPar':'<center><video autoplay loop src="images/shared/sex/mast/startvann.mp4"></video></center>'
+
+	if sisboytrio > 0 and sis_watch = 0 and $loc = 'bedrPar':
+		sis_watch = 1
+		if locat['Anya_inroom'] = 1:sis_watch = 2 & 'Anya smiles and lets you carry on.'
+	end
+
+	!!then the calculation invasion
+	if $loc = 'vanrPar':
+		if selfplaytime >= 60:
+		end
+	end
+
+	gs 'selfplay', 'sis_prov'
+
+	! This keeps resetting your dildo choices and makes it impossible to masturbate with them. Sicaa
+	!if mc_inventory['dildo_small'] + mc_inventory['dildo_normal'] + mc_inventory['dildo_big'] + mc_inventory['dildo_large'] + mc_inventory['dildo_huge'] + mc_inventory['dildo_enormous'] + mc_inventory['dildo_gigantic'] ! 0:
+	!	dildonumber = 0
+	!end
+	if dildonumber > 0: gs 'boyStat', 'D<<dildonumber>>' & dildohand = (dildonumber + 1) * 5
+
+	gs 'selfplay', 'dildo_options'
+
+	if pcs_horny > 0:
+		act 'Caress your clitoris':
+			cls
+			selfplaytime += 5
+			gs 'selfplay', 'sis_prov'
+
+			!!if $loc = 'bedrPar':'<center><video autoplay loop src="images/shared/sex/mast/klit.mp4"></video></center>'
+
+			if $loc = 'vanrPar':
+				'<center><img <<$set_imgh>> src="images/shared/sex/mast/klitvann.jpg"></center>'
+			else
+				'<center><video autoplay loop src="images/shared/sex/mast/klit.mp4"></video></center>'
+			end
+
+			if pcs_mood >= 20:
+				pcs_horny += rand(5, 10)
+				'You put your hand down between your legs and gently rub your fingers over your groin. Running your fingers between your pussy lips, you scout out your clitoris and lightly run your finger over it repeatedly. The feeling you get out of this is great, and you feel a pleasant warmth spreading in your lower area.'
+			else
+				pcs_horny += rand(0, 1)
+				'You caress your clit with your fingers. It feels nice, but you''re in such a bad mood that you''re too distracted to really enjoy it.'
+			end
+
+			$orgasm_txt = 'Suddenly, you rub your clit just right and your whole body starts to shiver in orgasm. The intensity of the orgasm nearly makes you scream, but you bite down on your lip and do your best to stifle down the moans so no one hears you.'
+			*nl
+			gs 'arousal', 'clit_finger', 20, 'masturbate'
+			minut -= 15
+			gs 'stat'
+
+			'<<$AnyaMsg>>'
+
+			act 'Stop touching yourself':gt 'selfplay', 'stop'
+
+			if org_temp = orgasm:gs 'selfplay', 'fingering'
+		end
+	end
+
+	if pcs_horny > 0 and agape < 3: gs 'selfplay', 'anal_fingering'
+
+	if pcs_horny > 10:
+		if mc_inventory['dildo_small'] >= 1 or mc_inventory['dildo_normal'] = 1 or mc_inventory['dildo_big'] = 1 or mc_inventory['dildo_large'] = 1 or mc_inventory['dildo_huge'] = 1 or mc_inventory['dildo_enormous'] = 1 or mc_inventory['dildo_gigantic'] = 1:
+
+			if dildonumber > 0:
+				gs 'boyStat', 'D<<dildonumber>>'
+
+				if vgape <= 0:
+					act 'Use the dildo on your pussy':
+						if stat['think_virgin'] = 1 and dick >= 20:
+							'Are you sure? Doing so will most likely break your hymen.'
+							act 'Yes, do it':
+								cls
+								selfplaytime += 15
+								gs 'selfplay', 'sis_prov'
+
+								if $husID ! '' and husbandrink ! 10 and $loc = 'bedr': gt 'husbsex','husb_mastr_vtor'
+
+								!!if $loc = 'bedrPar':'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildo.jpg"></center>'
+								if $loc = 'vanrPar':
+									'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildovann.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildo.jpg"></center>'
+								end
+
+								gs 'dinsex2', 'd_vag_sex_dildo', 15, 'masturbate'
+								gs 'stat'
+								'<<$AnyaMsg>>'
+
+								act 'Stop using the dildo':gt 'selfplay', 'start'
+							end
+							act 'On second thoughts, no': gt 'selfplay', 'start'
+						else
+							cls
+							selfplaytime += 15
+							gs 'selfplay', 'sis_prov'
+
+							if $husID ! '' and husbandrink ! 10 and $loc = 'bedr': gt 'husbsex','husb_mastr_vtor'
+
+							!!if $loc = 'bedrPar':'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildo.jpg"></center>'
+							if $loc = 'vanrPar':
+								'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildovann.jpg"></center>'
+							else
+								'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildo.jpg"></center>'
+							end
+
+							gs 'dinsex2', 'd_vag_sex_dildo', 15, 'masturbate'
+							gs 'stat'
+							'<<$AnyaMsg>>'
+
+							act 'Stop using the dildo':gt 'selfplay', 'start'
+						end
+					end
+				end
+
+				if agape <= 0:
+					act 'Use the dildo on your ass':
+						cls
+						selfplaytime += 15
+						gs 'selfplay', 'sis_prov'
+
+						!!if $loc = 'bedrPar':'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildoanal.jpg"></center>'
+						if $loc = 'vanrPar':
+							'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildovann.jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="images/shared/sex/mast/dildoanal.jpg"></center>'
+						end
+
+						gs 'dinsex2', 'd_analsex_dildo',15, 'masturbate'
+						gs 'stat'
+						'<<$AnyaMsg>>'
+
+						act 'Stop using the dildo':gt 'selfplay', 'start'
+					end
+				end
+			end
+		end
+	end
+
+	if pcs_horny > 0:gs 'selfplay', 'fingering'
+
+	act 'Stop masturbating': gt 'selfplay', 'stop'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	if $loc = 'gad_gpbarn':
+		npc_horny['A66'] += 1
+		'Bandit the dog is watching you curiously.'
+	end
+end
+
+if $ARGS[0] = 'dildo_options':
+	if dildonumber ! 0: *pl & *pl 'You are using a <<dick>>cm long dildo.'
+
+	*pl
+
+	if mc_inventory['dildo_small'] = 1:
+		if dildonumber = 1:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 10cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 1 & gs ''boyStat'', ''D1'' & gt ''selfplay'', ''start''">Start</a> using the 10cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_normal'] = 1:
+		if dildonumber = 2:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 15cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 2 & gs ''boyStat'', ''D2'' & gt ''selfplay'', ''start''">Start</a> using the 15cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_big'] = 1:
+		if dildonumber = 3:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 20cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 3 & gs ''boyStat'', ''D3'' & gt ''selfplay'', ''start''">Start</a> using the 20cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_large'] = 1:
+		if dildonumber = 4:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 25cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 4 & gs ''boyStat'', ''D4'' & gt ''selfplay'', ''start''">Start</a> using the 25cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_huge'] = 1:
+		if dildonumber = 5:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 30cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 5 & gs ''boyStat'', ''D5'' & gt ''selfplay'', ''start''">Start</a> using the 30cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_enormous'] = 1:
+		if dildonumber = 6:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 35cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 6 & gs ''boyStat'', ''D6'' & gt ''selfplay'', ''start''">Start</a> using the 35cm long dildo.'
+		end
+	end
+
+	if mc_inventory['dildo_gigantic'] = 1:
+		if dildonumber = 7:
+			*pl '<a href="exec:dildonumber = 0 & gt ''selfplay'', ''start''">Stop</a> using the 40cm long dildo.'
+		else
+			*pl '<a href="exec:dildonumber = 7 & gs ''boyStat'', ''D7'' & gt ''selfplay'', ''start''">Start</a> using the 40cm long dildo.'
+		end
+	end
+end
+
+!! Bathroom Dildo Info
+!! bathtub_suction_dildo - dildo that is applied on the low wall of a bathtub
+!! bath_shower_dildo - dildo that is applied onto the wall of a bathtub that also has a shower
+!! glass_shower_dildo - dildo applied to glass wall of a shower with no tub
+
+if $ARGS[0] = 'suction_dildo':
+	*nl
+	if dyneval('result = <<$loc>>_bathtub_dildo') ! 1 and mc_inventory['dildo_suction'] > 0:
+		'You can stick your suction dildo to the <a href="exec:gs ''selfplay'',''bathtub_suction_dildo_apply'' & gt $loc, $loc_arg">bath tub</a> to play with.'
+	elseif dyneval('result = <<$loc>>_bathtub_dildo') = 1:
+		'Your <a href="exec:gs ''selfplay'',''bath_suction_dildo''">suction dildo</a> is stuck to the bath tub.'
+	end
+	if mc_inventory['dildo_suction'] > 0 and dyneval('result = <<$loc>>_bath_shower_dildo') ! 1 and dyneval('result = <<$loc>>_glass_shower_dildo') ! 1:
+		'You can also stick a suction dildo inside <a href="exec:gs ''selfplay'',''shower_suction_dildo_apply'' & gt $loc, $loc_arg">the shower</a>.'
+	elseif dyneval('result = <<$loc>>_bath_shower_dildo') = 1 or dyneval('result = <<$loc>>_glass_shower_dildo') = 1:
+		'Your suction dildo is <a href="exec:gt ''selfplay'',''shower_suction_dildo''">inside the shower</a>.'
+	end
+end
+
+if $ARGS[0] = 'bathtub_suction_dildo_apply':
+	dynamic('<<$loc>>_bathtub_dildo = 1')
+	dynamic('<<$loc>>_suction_dildo += 1')
+	mc_inventory['dildo_suction'] -= 1
+
+
+end
+
+if $ARGS[0] = 'bathtub_suction_dildo_remove':
+	dynamic('<<$loc>>_bathtub_dildo = 0')
+	dynamic('<<$loc>>_suction_dildo -= 1')
+    mc_inventory['dildo_suction'] += 1
+
+end
+
+if $ARGS[0] = 'shower_suction_dildo_apply':
+	dynamic('<<$loc>>_suction_dildo += 1')
+	if $bathtype = 'bathtub shower':
+		dynamic('<<$loc>>_bath_shower_dildo = 1')
+	elseif $bathtype = 'glass shower' or $bathtype = 'glass shower and tub':
+		dynamic('<<$loc>>_glass_shower_dildo = 1')
+	end
+	mc_inventory['dildo_suction'] -= 1
+end
+
+if $ARGS[0] = 'shower_suction_dildo_remove':
+	dynamic('<<$loc>>_suction_dildo -= 1')
+	if $bathtype = 'bathtub shower':
+		dynamic('<<$loc>>_bath_shower_dildo = 0')
+	elseif $bathtype = 'glass shower' or $bathtype = 'glass shower and tub':
+		dynamic('<<$loc>>_glass_shower_dildo = 0')
+	end
+    mc_inventory['dildo_suction'] += 1
+end
+
+if $ARGS[0] = 'bathtub_dildo_check':
+	if dyneval('result = <<$loc>>_bathtub_dildo') = 1:
+		act 'Ride your bathtub dildo':gt 'selfplay', 'bath_bathtub_suction_dildo_ride'
+	end
+end
+
+if $ARGS[0] = 'shower_dildo_check':
+	if dyneval('result = <<$loc>>_bathtub_dildo') = 1:
+		act 'Ride your bathtub dildo':gt 'selfplay', 'shower_bathtub_suction_dildo_ride'
+	end
+	if dyneval('result = <<$loc>>_glass_shower_dildo') = 1:
+		act 'Ride your wall mounted dildo':gt 'selfplay', 'glass_shower_suction_dildo_fuck'
+	elseif dyneval('result = <<$loc>>_bath_shower_dildo') = 1:
+		act 'Ride your wall mounted dildo':gt 'selfplay', 'shower_bathtub_wall_dildo_fuck'
+	end
+end
+
+if $ARGS[0] = 'bath_suction_dildo':
+	cla & *clr
+	'<center><img <<$set_imgh>> src="images/shared/home/bathroom/bathtub_dildo.jpg"></center>'
+	'Your suction dildo is currently stuck onto the bathtub.'
+	act 'Leave it there': gt $loc, $loc_arg
+	act 'Take it off': gs 'selfplay', 'bathtub_suction_dildo_remove' & gt $loc, $loc_arg
+	act 'Ride it': gt 'selfplay', 'bath_suction_dildo_ride'
+end
+
+if $ARGS[0] = 'shower_suction_dildo':
+	cla & *clr
+	'<center><img <<$set_imgh>> src="images/shared/home/bathroom/shower_dildo.jpg"></center>'
+	'Your suction dildo is currently stuck on the wall of the shower.'
+	act 'Leave it there': gt $loc, $loc_arg
+	act 'Take it off': gs 'selfplay', 'shower_suction_dildo_remove' & gt $loc, $loc_arg
+end
+
+!! for using a dildo suctioned to the BATHTUB when not bathing
+if $ARGS[0] = 'bath_suction_dildo_ride':
+	pcs_horny += 20
+	gs 'boyStat', 'D2'
+	gs 'stat'
+	'<center><video autoplay loop src="images/shared/home/bathroom/bath_dildo.mp4"></video></center>'
+	if dildo_timer = 0:
+		dildo_timer = 1
+		dildo_start_minute = minut
+		dildo_start_hour = hour
+	end
+	if pcs_vag = 0:
+		'You wince in pain as you sit down on your dildo and it tears through your hymen. After giving yourself a minute to adjust, you tentatively bounce up and down on it, until you start to enjoy yourself.'
+	elseif dildo_start_minute = minut and dildo_start_hour = hour:
+		'You spend 5 minutes bouncing up and down on the dildo mounted on your bathtub wall and having a good time.'
+	else
+		'You spend 5 more minutes happily bouncing up and down on your bathtub mounted dildo.'
+	end
+	*nl
+	$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Gasping, quivering, and clenching, you ride out your orgasm while impaled on your bathtub dildo.'
+	if pcs_horny >= 90:$orgasm_or = 'yes'
+	gs 'arousal', 'vaginal_dildo',5
+	*nl
+	act'Keep masturbating': gt 'selfplay', 'bath_suction_dildo_ride'
+	act'Finish masturbating':
+		dildo_timer = 0
+		gs 'arousal', 'end'
+		gt $loc, $loc_arg
+	end
+	act'Finish masturbating and unmount your dildo':
+		dildo_timer = 0
+		gs 'arousal', 'end'
+		gs 'selfplay','bathtub_suction_dildo_remove'
+		gt $loc, $loc_arg
+	end
+end
+
+!! this is riding a dildo mounted on the low wall of a bath tub during a SHOWER
+if $ARGS[0] = 'shower_bathtub_suction_dildo_ride':
+	vaginal_slip = 10
+	pcs_horny += 20
+	gs 'boyStat','D2'
+	gs 'stat'
+	'<center><video autoplay loop src="images/shared/home/bathroom/shower_bath_dildo1.mp4"></video></center>'
+	if dildo_timer = 0:
+		dildo_timer = 1
+		dildo_start_minute = minut
+		dildo_start_hour = hour
+	end
+	*nl
+	if pcs_vag = 0:
+		'Leaving the shower running, you move the curtain aside and ease down onto your bathtub mounted rubber cock.'
+		*nl
+		'You wince in pain as it tears through your hymen and slip on the wet tub floor, gasping aloud when you suddenly find yourself ass-to-tub and the entire thing shoved up your pussy.'
+		*nl
+		'<i>Ow! Ow! Ow! Ow! I did not mean to take the full length of that thing right away!</i>'
+		*nl
+		'Biting hard on your lip, you give yourself a minute to adjust and let your walls stretch out. Eventually you feel a little braver and you tentatively bounce up and down on it. One bounce becomes two, two becomes twelve, and suddenly you are jumping up and down on it with reckless abandon, very much enjoying your big rubber cock.'
+	elseif dildo_start_minute = minut and dildo_start_hour = hour:
+		'Leaving the shower running, you move the curtain aside and ease down onto your bathtub mounted rubber cock.'
+		*nl
+		if $loc = 'vanrPar':
+			'<i>Haahhh~! Hhhh~! Mmmm~! Unnnh~!</i>'
+			*nl
+			if locat['Fam_inGad'] = 1:
+				'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and the fact that your family is gone for the weekend.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Gasping, quivering, and clenching, you cry out loudly and ride out your orgasm while your voice echos back at you off the walls.'
+			else
+				'You bounce up and down on your dildo, allowing yourself to sofly moan in pleasure, fairly certain that the sound of the shower ought to cover up most of your voice. Maybe it''s just the steam but you feel like you''re enjoying yourself a lot more than you might otherwise.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Gasping, quivering, and clenching, you ride out your orgasm while impaled on your bathtub dildo doing your best not to allow your voice escape and let your family know what you''ve been up to.'
+			end
+		else
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and making sure anyone on the other side of the wall knows you''re enjoying yourself too.'
+
+			$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. You cry out loudly in climax, caught in the euphoric bliss of release, before slowly winding down.'
+		end
+	else
+		if $loc = 'vanrPar':
+			'<i>Hnnn~! Hnnnnhhh~! Nnnnn~! Mmmmm~!</i>'
+			*nl
+			'You continue bouncing up and down on your dildo, unwilling to finish your shower while you''re still enjoying yourself.'
+		else
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and making sure anyone on the other side of the wall knows you''re enjoying yourself too.'
+		end
+	end
+	*nl
+	if pcs_horny >= 90:$orgasm_or = 'yes'
+	*nl
+	gs 'arousal', 'vaginal_dildo',5
+	act 'Keep masturbating': gt 'selfplay', 'shower_bathtub_suction_dildo_ride'
+	act'Finish masturbating and dry off':
+		dildo_timer = 0
+		gs 'arousal', 'end'
+		mirror_steam = hour
+		gt $loc, $loc_arg
+	end
+	act'Finish masturbating, unmount your dildo, and get out and dry off':
+		dildo_timer = 0
+		gs 'selfplay','bathtub_suction_dildo_remove'
+		gs 'arousal', 'end'
+		mirror_steam = hour
+		gt $loc, $loc_arg
+	end
+end
+
+!! this is riding a dildo mounted on the low wall of a bath tub during a BATH
+if $ARGS[0] = 'bath_bathtub_suction_dildo_ride':
+	vaginal_slip = 10
+	pcs_horny += 20
+	gs 'boyStat','D2'
+	gs 'stat'
+	'<center><video autoplay loop src="images/shared/home/bathroom/shower_bath_dildo2.mp4"></video></center>'
+	if dildo_timer = 0:
+		dildo_timer = 1
+		dildo_start_minute = minut
+		dildo_start_hour = hour
+	end
+	if pcs_vag = 0:
+		'Pulling yourself up out of the bath, you point your ass towards your suction mounted dildo and ease your pussy onto it.'
+		*nl
+		'You wince in pain as it tears through your hymen and you slip, the bathwater sloshing around from your sudden movement. Next thing you know, you''re gasping aloud when you suddenly find yourself ass-to-tub and the entire dildo shoved up your pussy to the hilt.'
+		*nl
+		'<i>Ow! Ow! Ow! Ow! I did not mean to take the full length of that thing right away!</i>'
+		*nl
+		'Biting hard on your lip, you give yourself a minute to adjust and let your walls stretch out. Eventually you feel a little braver and you tentatively bounce up and down on it. One bounce becomes two, two becomes twelve, and suddenly you are jumping up and down on it with reckless abandon, creating mini waves in the bathwater and very much enjoying your big rubber cock.'
+	elseif dildo_start_minute = minut and dildo_start_hour = hour:
+		'Pulling yourself out of the bath, you decide it''s time for a different kind of relaxation and ease down onto your bathtub mounted rubber cock.'
+		if $loc = 'vanrPar':
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			if locat['Fam_inGad'] = 1:
+				'You bounce up and down on your dildo, creating sloshes in the bathwater with your motion and moaning loudly, taking advantage of the fact your family is gone for the weekend.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Legs shaking and splashing bathwater everywhere, you ride out your orgasm while impaled on your dildo, crying out in a loud voice that echos off the bathroom walls.'
+			else
+				'<i>Haahhh~! Hhhh~! Mmmm~! Unnnh~!</i>'
+			*nl
+				'You bounce up and down on your dildo, creating ripples in the bathwater with your motion. In a very tiny voice, you let out small moans, doing your best but unable to completely hold it.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Legs shaking and splashing bathwater everywhere, you ride out your orgasm while impaled on your bathtub dildo taking strained breaths to prevent your voice escaping and let your family know what you''ve been up to.'
+			end
+		else
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and making sure anyone on the other side of the wall knows you''re enjoying yourself too.'
+			$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. You cry out loudly in climax, caught in the euphoric bliss of release, before it slowly winds down.'
+		end
+	else
+		if $loc = 'vanrPar':
+			if locat['Fam_inGad'] = 1:
+				'<i>Ahh~! Aaahhhh~! Ahhhh~! Aaaaahhhh~!</i>'
+				*nl
+				'You continue bouncing up and down on your dildo, unwilling to finish your shower while you''re still enjoying yourself. Maybe it''s just the steam in the room but your body feels like it''s on fire right now and you can''t help but cry out loudly, so happy your family is gone for the weekend.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Legs shaking and splashing bathwater everywhere, you groan loudly and ride out your orgasm while impaled on your dildo.'
+			else
+				'<i>Hnnn~! Hnnnnhhh~! Nnnnn~! Mmmmm~!</i>'
+				*nl
+				'You continue bouncing up and down on your dildo, unwilling to finish your shower while you''re still enjoying yourself. Maybe it''s just the steam in the room but your body feels like it''s on fire right now and it''s so difficult to not let your voice escape and travel into the hallway.'
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam yourself all the way down onto your dildo and climax hard all over it. Your walls squeeze tight and you can feel the entire shape of the rubber cock inside you. Legs shaking and splashing bathwater everywhere, you ride out your orgasm while impaled on your dildo taking strained breaths to prevent your voice escaping and let your family know what you''ve been up to.'
+			end
+		else
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and making sure anyone on the other side of the wall knows you''re enjoying yourself too.'
+		end
+	end
+	*nl
+	if pcs_horny >= 90:$orgasm_or = 'yes'
+	*nl
+	gs 'arousal', 'vaginal_dildo',5
+	act 'Keep masturbating': gt 'selfplay', 'bath_bathtub_suction_dildo_ride'
+	act'Finish masturbating and dry off':
+		dildo_timer = 0
+		gs 'arousal', 'end'
+		mirror_steam = hour
+		gt $loc, $loc_arg
+	end
+	act'Finish masturbating, unmount your dildo, and get out and dry off':
+		dildo_timer = 0
+		gs 'selfplay','bathtub_suction_dildo_remove'
+		gs 'arousal', 'end'
+		mirror_steam = hour
+		gt $loc, $loc_arg
+	end
+end
+
+
+!! this is using a dildo mounted on WALL the shower in a bathtub during a SHOWER
+if $ARGS[0] = 'shower_bathtub_wall_dildo_fuck':
+	vaginal_slip = 10
+	pcs_mood += 1
+	pcs_horny += 20
+	gs 'boyStat','D2'
+	gs 'stat'
+	'<center><video autoplay loop src="images/shared/home/bathroom/shower_dildo2.mp4"></video></center>'
+	$orgasm_txt = 'You can''t take it anymore and throw yourself as far back onto the dildo as you can, impaling yourself to the hilt on it. Spraying your clit with the showerhead, you don''t stop even when your orgasm makes you a quivering mess, standing up on your tiptoes as pleasure rocks your entire body.'
+	if dildo_timer = 0:
+		dildo_timer = 1
+		dildo_start_minute = minut
+		dildo_start_hour = hour
+	end
+	if pcs_vag = 0:
+		'Leaving the shower running, you bend over, pointing your bottom towards your wall mounted dildo. You figure it''s time that you test this thing out.'
+		*nl
+		'Lining it up with your pussy, you slowly push yourself back onto it, feeling it stretch you and penetrate you until you feel it bumping against your hymen. After taking a deep breath, you force your ass backward, immediately letting out a whimper of pain when you feel it tear through your maidenhood.'
+		*nl
+		'Biting hard on your lip, you give yourself a minute to adjust and let your walls stretch out. Eventually you feel a little braver and you tentatively slide off of it and then push back on again. With big long strokes, you pull all the way off and then push slowly back on until your filled and you feel your ass touching the wall. Soon it starts to feel good, and you pick up the pace. And then you grab the showerhead and start spraying your clit with it while you slam yourself back on forth on your rubber cock.'
+		*nl
+		'<i>Ohhhhhh yeahhhhhh... I could get used to this...</i>'
+	elseif dildo_start_minute = minut and dildo_start_hour = hour:
+		if $loc = 'vanrPar':
+			'Using the wall of the tub as leverage, you breathe hard as you push your ass back and forth on the dildo mounted on the wall. Hot water from the shower rains down and steam fills the air and you to play tag with the bathtub wall, repeatedly tapping it with the back of your ass while your pussy gets stuffed with rubber.'
+			*nl
+			if locat['Fam_inGad'] = 1:
+				'<b>thump</b><b>thump</b><b>thump</b><b>thump'
+				*nl
+				'<i>Ahh~! Aaahhhh~! Ahhhh~! Aaaaahhhh~!</i>'
+				*nl
+				'The echos of your moans and your ass bounce off the shower walls as you happily take advantage of the fact your family is away for the weekend.'
+
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam your ass all the way to the wall and climax hard all over your dildo. Your walls squeeze tight and you can perfectly feel the shape of the entire rubber cock inside you. Legs shaking and knees trying not to buckle, you ride out your orgasm while impaled on your shower dildo, screaming out an orgasm that can probably be heard from your room.'
+			else
+				'<i>Haahhh~! Hhhh~! Mmmm~! Unnnh~!</i>'
+				*nl
+				'Though whimpers and gasps escape your lips, you do your best to keep your voice under control so your family doesn''t catch you masturbating in the shower.'
+
+				$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam your ass all the way to the wall and climax hard all over your dildo. Your walls squeeze tight and you can perfectly feel the shape of the entire rubber cock inside you. Legs shaking and knees trying not to buckle, you ride out your orgasm while impaled on your shower dildo, taking gasping breaths instead of screaming and letting your family know what you''ve been up to.'
+			end
+		else
+			'<b>thump</b><b>thump</b><b>thump</b><b>thump'
+			*nl
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you slap your ass back and forth against the shower wall, thorougly enjoying the dildo that''s pumping in and out of you right now.'
+
+			$orgasm_txt = 'Pleasure and heat build between your legs until finally you slam your ass all the way to the wall and climax hard all over your dildo. Your walls squeeze tight and you can perfectly feel the shape of the entire rubber cock inside you. You cry out loudly in climax, legs shaking and knees trying not to buckle, as you ride out your orgasm caught in euphoric bliss.'
+		end
+	else
+		if $loc = 'vanrPar':
+			if locat['Fam_inGad'] = 1:
+				'<b>thump</b><b>thump</b><b>thump</b><b>thump'
+				*nl
+				'<i>Ahh~! Aaahhhh~! Ahhhh~! Aaaaahhhh~!</i>'
+				*nl
+				'The shower keeps raining down on you just as you keep fucking your wall mounted dildo, making squelching noises as you occassionally slide it up and down with the force of your thrusts. Loud gasps escape your lips and you are so happy your family isn''t here right now.'
+			else
+				'<i>Hnnn~! Hnnnnhhh~! Nnnnn~! Mmmmm~!</i>'
+				*nl
+				'You''re not done yet. The shower keeps raining down on you just as you keep fucking your wall mounted dildo, making squelching noises as you occassionally slide it up and down with the force of your thrusts. Maybe it''s just the steam in the room but your body feels like its on fire right now and it''s so difficult to not let your voice escape and travel into the hallway.'
+			end
+		else
+			'<i><b>thump</b></i> <i><b>thump</b></i> <i><b>thump</b></i> <i><b>thump</b></i>'
+			'<i>Haahhh~! Hhhh~! Unnnh~! Unnnh~! Ahhh~!</i>'
+			*nl
+			'Your cries of pleasure echo off the walls of the bathroom as you ride your dildo, thoroughly enjoying yourself and making sure anyone on the other side of the wall knows you''re enjoying yourself too.'
+		end
+	end
+	*nl
+	if pcs_horny >= 90:$orgasm_or = 'yes'
+	*nl
+	gs 'arousal', 'vaginal_dildo',5
+	act 'Keep masturbating': gt 'selfplay', 'shower_bathtub_wall_dildo_fuck'
+	act'Finish masturbating and dry off':
+		dildo_timer = 0
+		mirror_steam = hour
+		gs 'arousal', 'end'
+		gt $loc, $loc_arg
+	end
+	act'Finish masturbating, unmount your dildo, and get out and dry off':
+		dildo_timer = 0
+		gs 'selfplay','shower_suction_dildo_remove'
+		mirror_steam = hour
+		gs 'arousal', 'end'
+		gt $loc, $loc_arg
+	end
+end
+
+!! this is for using a dildo mounted of the glass WALL of a SHOWER with no tub
+if $ARGS[0] = 'glass_shower_suction_dildo_fuck':
+	pcs_mood += 1
+	pcs_horny += 20
+	vaginal_slip = 10
+	gs 'boyStat','D2'
+	'<center><video autoplay loop src="images/shared/home/bathroom/shower_dildo1.mp4"></video></center>'
+	$orgasm_txt = 'You can''t take it anymore and throw yourself as far back onto the dildo as you can, impaling yourself to the hilt on it. Spraying your clit with the showerhead, you don''t stop even when your orgasm makes you a quivering mess, standing up on your tiptoes as pleasure rocks your entire body.'
+	if dildo_timer = 0:
+		dildo_timer = 1
+		dildo_start_minute = minut
+		dildo_start_hour = hour
+	end
+	if pcs_vag = 0:
+		'Moving your bottom over towards your wall mounted dildo, you figure it''s time that you test this thing out.'
+		*nl
+		'Lining it up with your pussy, you slowly push yourself back onto it, feeling it stretch you and penetrate you until you feel it bumping against your hymen. After taking a deep breath, you force your ass backward, immediately letting out a whimper of pain when you feel it tear through your maidenhood.'
+		*nl
+		'Biting hard on your lip, you give yourself a minute to adjust and let your walls stretch out. Eventually you feel a little braver and you tentatively slide off of it and then push back on again. With big long strokes, you pull all the way off and then push slowly back on until your filled and you feel your ass touching the wall. Soon it starts to feel good, and you pick up the pace. And then you grab the showerhead and start spraying your clit with it while you slam yourself back on forth on your rubber cock.'
+		*nl
+		'<i>Ohhhhhh yeahhhhhh... I could get used to this...</i>'
+	elseif dildo_start_minute = minut and dildo_start_hour = hour:
+		'"Haahhh~!" <i>thump</i> "Hhhh~!" <i>thump</i> "Unnnh~!" <i>thump</i> "Unnnh~!" <i>thump</i> "Ahhh~!"'
+		*nl
+		'Cries of pleasure echo inside the shower, as you repeatedly slam yourself back against your wall mounted dildo. Your ass makes a thumping sound every time you drive yourself to the base of the dildo and the only other sound is the white noise of the showerhead spraying against your clit.'
+	else
+		'"Anngh~!" <i><b>thump</b></i> "Hnnngh~!" <i><b>thump</b></i> "Unnngh~!" <i><b>thump</b></i> "Mmmnngh~!" <i><b>thump</b></i> "Ahhh~!!</i>'
+		*nl
+		'The thump of your ass against the wall is even louder now, but your voice too. In the far back of your mind, you vaguely wonder how awkward it might be if you have to explain to the landlord you shattered the shower by fucking a rubber cock you suctioned to it.'
+	end
+	*nl
+	if pcs_horny >= 90:$orgasm_or = 'yes'
+	*nl
+	gs 'arousal', 'vaginal_dildo', 5, 'masturbate'
+	gs 'stat'
+	act 'Keep masturbating': gt 'selfplay', 'glass_shower_suction_dildo_fuck'
+	act'Finish masturbating and dry off':
+		dildo_timer = 0
+		mirror_steam = hour
+		gs 'arousal', 'end'
+		gt $loc, $loc_arg
+	end
+	act'Finish masturbating, unmount your dildo, and get out and dry off':
+		dildo_timer = 0
+		gs 'selfplay','shower_suction_dildo_remove'
+		mirror_steam = hour
+		gs 'arousal', 'end'
+		gt $loc, $loc_arg
+	end
+end
+
+
+
+if $ARGS[0] = 'sis_prov':
+
+	$AnyaMsg = ''
+
+	if $loc = 'bedrPar':
+		gs 'family_schedule'
+
+		if locat['Anya_Gad'] = 0:
+			if locat['Anya_inroom'] = 0 and proverkasisterhere = 0:proverkasisterhere = 1
+
+			if locat['Anya_inroom'] = 1:
+				cls
+				if sisboytrio > 0 and sis_watch = 1:
+					sis_watch = 2
+					$AnyaMsg = 'Anya smiles as she enters the room and waves at you to carry on.'
+				else
+					if proverkasisterhere = 2 and RAND(1,3) = 3:
+						SisterKnowMastr += 1
+						$AnyaMsg = '<font color="red"><b>Anya saw you masturbate.</b></font>'
+					end
+
+					if proverkasisterhere = 1:
+						proverkasisterhere = 2
+						$AnyaMsg = '<font color="red"><b>You hear footsteps approaching your room.</b></font>'
+					end
+				end
+			end
+		end
+	end
+end
+
+! WD: Masturbating at night only has 10% chance to be discovered
+if $ARGS[0] = 'van_vtor':
+	if locat['Fam_inGad'] = 0 and (hour >= 6 or Rand(1, 10) = 1):
+		cls
+		pcs_horny -= 50
+		pcs_mood -= 10
+		gs 'stat'
+		'You hear shouting from outside the bathroom: "<<$pcs_nickname>>! Are you drowning in there or something? What''s taking so long? Get out of there!"'
+
+		act 'Get out of the bath and dry yourself off':
+			gt 'selfplay', 'stop'
+		end
+
+		exit
+	else
+		selfplaytime -= 15
+	end
+end
+
+if $ARGS[0] = 'fingering':
+	act 'Put a finger inside your vagina':
+		cls
+		selfplaytime += 2
+		gs 'selfplay', 'sis_prov'
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/finger.jpg"></center>'
+
+		if pcs_vag = 0 and mesec <= 0:
+			'You let your fingers dart over your soft and wet pussy lips, before gradually attempting to slide your finger into your pussy. You feel your hymen stretch a little as you slide first one and then a second finger inside.'
+
+			*nl
+			gs 'arousal', 'vaginal_finger', 2, 'masturbate'
+			gs 'stat'
+			gs 'selfplay', 'fingering2'
+		elseif pcs_vag > 0:
+			'You slide one finger into your vagina, and then another.'
+			if pcs_vag < 5:
+				pcs_horny += rand(2, 5)
+				'You feel your pussy clasping around your fingers very tightly.'
+			elseif pcs_vag < 10:
+				pcs_horny += rand(5, 10)
+				'You feel your slippery pussy walls around your fingers. It feels nice and tight.'
+			else
+				pcs_horny += rand(2, 5)
+				'Having your fingers in your pussy feels nice, but it doesn''t feel very tight. You feel like you can take more.'
+			end
+
+			'<<$AnyaMsg>>'
+
+			*nl
+			gs 'arousal', 'vaginal_finger', 5, 'masturbate'
+			gs 'stat'
+
+			if org_temp = orgasm: gs 'selfplay', 'fingering2'
+
+		elseif mesec > 0:
+			pcs_mood -= 5
+			'Your vagina has some dried up blood from your period on it. You attempt to shove your finger in, but then are kind of grossed out by the idea and reconsider.'
+		end
+
+		act 'Stop touching yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'fingering2':
+
+	act 'Fuck your fingers':
+		cls
+		selfplaytime += 10
+		gs 'selfplay', 'sis_prov'
+
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/finger.jpg"></center>'
+		if args[1] = 1:
+			'You continue fucking yourself with your fingers, massaging and squeezing your breasts.'
+		else
+			'You start moving your fingers in and out, softly pinching your nipples as you play with yourself.'
+		end
+
+		*nl
+
+		if pcs_vag <= 12:'Your pussy walls are stretched nicely from the finger fucking, and you feel a pleasant warmth spread in your lower body.'
+		if pcs_vag > 12:'Your pussy is quite loose, and you have to work hard to get much enjoyment out of it.'
+
+		'<<$AnyaMsg>>'
+
+		*nl
+		gs 'arousal', 'vaginal_finger', 10, 'masturbate'
+		gs 'stat'
+
+		if org_temp = orgasm:
+			gs 'selfplay', 'fingering2', 1
+			if pcs_vag > 0: gs 'selfplay', 'fingering3'
+		end
+
+		act 'Stop touching yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'fingering3':
+	act 'Thrust all of your fingers into your vagina':
+		cls
+		selfplaytime += 2
+		gs 'selfplay', 'sis_prov'
+
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/hand.jpg"></center>'
+
+		'You shove all your fingers inside your pussy.'
+
+		if pcs_vag < 10:
+			if vgape = 2:vgape = 3
+			if vgape = 1:vgape = 2
+			if vgape = 0:vgape = 1
+
+			pcs_horny -= 10
+			pcs_mood -= 10
+			'You shove all your fingers inside your tight pussy, and feel it stretch out way more than it should. It''s rather painful.'
+		elseif pcs_vag < 15:
+			pcs_horny += rand(1, 3)
+			'You shove all your fingers inside your tight pussy, feeling your pussy grip them tightly. It doesn''t hurt, but doesn''t feel very good either.'
+		elseif pcs_vag < 20:
+			pcs_horny += rand(3, 6)
+			'You shove all your fingers inside your tight pussy, feeling your pussy grip them tightly.'
+		else
+			pcs_horny += rand(6, 12)
+			'You stick all of your fingers in your pussy, and feel how your vagina envelops them nicely. You get a pleasant feeling of fullness.'
+		end
+		if pcs_vag < 15:vaginaTemp += 1
+
+		'<<$AnyaMsg>>'
+
+		*nl
+		gs 'arousal', 'vaginal_finger', 2, 'masturbate'
+		gs 'stat'
+
+		if org_temp = orgasm: gs 'selfplay', 'fingering4'
+
+		act 'Stop touching yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'fingering4':
+	act 'Fuck yourself with your fingers':
+		cls
+		selfplaytime += 10
+		gs 'selfplay', 'sis_prov'
+
+		if pcs_vag < 10:
+			if vgape = 2:vgape = 3
+			if vgape = 1:vgape = 2
+			if vgape = 0:vgape = 1
+
+			pcs_horny -= 10
+			pcs_mood -= 10
+		end
+
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/hand.jpg"></center>'
+		if args[1] = 1:
+			'You continue to move your hand, thrusting your fingers into your pussy again and again.'
+		else
+			'You start to slowly move your hand, thrusting your fingers into your pussy again and again.'
+		end
+
+		if pcs_vag <= 15:pcs_horny -= 10 & pcs_mood -= 10 & 'You''re stretching your pussy to the point where it becomes rather painful, and don''t get any enjoyment out of it.'
+		if pcs_vag > 10:pcs_horny += rand(10, 20) & 'Your pussy walls are stretched nicely from the finger fucking, and you feel a pleasant warmth spread in your lower body.'
+
+		gs 'stat'
+
+		if pcs_vag < 20:vaginaTemp += 1
+
+		'<<$AnyaMsg>>'
+
+		*nl
+		gs 'arousal', 'vaginal_finger', 10, 'masturbate'
+		gs 'stat'
+
+		if org_temp = orgasm:
+			gs 'selfplay', 'fingering4', 1
+			if pcs_vag > 10: gs 'selfplay', 'self_fisting_1'
+		end
+
+		act 'Stop touching yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'self_fisting_1':
+	act 'Thrust your whole hand into your vagina':
+		cls
+		selfplaytime += 2
+		gs 'selfplay', 'sis_prov'
+
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/self_fisting.jpg"></center>'
+
+
+		if pcs_vag < 15:
+			if vgape = 2:vgape = 3
+			if vgape = 1:vgape = 2
+			if vgape = 0:vgape = 1
+
+			pcs_horny -= 10
+			pcs_mood -= 10
+			'You shove your whole hand inside your tight pussy, and feel it stretch out way more than it should. It''s rather painful.'
+		elseif pcs_vag < 20:
+			pcs_horny += rand(1, 3)
+			'You shove your whole hand inside your tight pussy, feeling your pussy grip it tightly. It doesn''t hurt, but doesn''t feel very good either.'
+		elseif pcs_vag < 25:
+			pcs_horny += rand(3, 6)
+			'You shove your whole hand inside your tight pussy, feeling your pussy grip it tightly.'
+		else
+			pcs_horny += rand(6, 12)
+			'You stick your whole hand in your pussy, and feel how your vagina envelops it nicely. You get a pleasant feeling of fullness.'
+		end
+		if pcs_vag < 20:vaginaTemp += 1
+
+		*nl
+		gs 'arousal', 'self_fisting', 2, 'masturbate'
+		gs 'stat'
+
+		'<<$AnyaMsg>>'
+
+		if org_temp = orgasm: gs 'selfplay', 'self_fisting_2'
+
+		act 'Stop fisting yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'self_fisting_2':
+	act 'Fuck your fist':
+		cls
+		selfplaytime += 10
+		gs 'selfplay', 'sis_prov'
+
+		if pcs_vag < 15:
+			if vgape = 2:vgape = 3
+			if vgape = 1:vgape = 2
+			if vgape = 0:vgape = 1
+
+			pcs_horny -= 10
+			pcs_mood -= 10
+		end
+
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/self_fisting.jpg"></center>'
+		if args[1] = 1:
+			'You continue to move your arm, thrusting your hand into your pussy again and again.'
+		else
+			'You start to slowly move your arm, thrusting your hand into your pussy again and again.'
+		end
+
+		if pcs_vag <= 20:pcs_horny -= 10 & pcs_mood -= 10 & 'You''re stretching your pussy to the point where it becomes rather painful, and don''t get any enjoyment out of it.'
+		if pcs_vag > 15:pcs_horny += rand(10, 20) & 'Your pussy walls are stretched nicely from the fisting, and you feel a pleasant warmth spread in your lower body.'
+
+		gs 'stat'
+
+		if pcs_vag < 25:vaginaTemp += 1
+
+		'<<$AnyaMsg>>'
+
+		*nl
+		gs 'arousal', 'self_fisting', 10, 'masturbate'
+		gs 'stat'
+
+		if org_temp = orgasm: gs 'selfplay', 'self_fisting_2', 1
+
+		act 'Stop touching yourself':gt 'selfplay', 'stop'
+	end
+end
+
+if $ARGS[0] = 'anal_fingering':
+	act 'Put a finger in your ass':
+		cls
+		selfplaytime += 5
+		gs 'selfplay', 'sis_prov'
+
+		!!if $loc = 'bedrPar':'<center><video autoplay loop src="images/shared/sex/mast/klit.mp4"></video></center>'
+		!!if $loc = 'vanrPar':'<center><img <<$set_imgh>> src="images/shared/sex/mast/klitvann.jpg"></center>'
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/1.jpg"></center>'
+
+		*nl
+		gs 'arousal', 'anal_finger', 5, 'masturbate'
+		gs 'stat'
+
+		if pcs_ass >= 5:
+			'You press a finger against your asshole and push it in. It slides in quite easily.'
+		else
+			pcs_ass += 1
+			'You press a finger against your tight asshole and push it in. Your anus is squeezing your finger tightly.'
+		end
+
+		if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+		gs 'stat'
+		'<<$AnyaMsg>>'
+
+		act 'Stop touching yourself':gt $loc, $loc_arg
+
+		if org_temp = orgasm:
+			act 'Add a second finger': gt 'selfplay', 'anal_fingering2'
+		end
+	end
+end
+
+if $ARGS[0] = 'anal_fingering2':
+	cls
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/2.jpg"></center>'
+
+	if pcs_ass >= 10:
+		'You relax and squeeze a second finger in, alongside the first. It slides in fairly easily.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+
+			if pcs_ass > 1:pcs_ass -= 1
+
+			'Pushing a second finger into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	elseif pcs_ass >= 5 and pcs_ass < 10:
+		analplay += 1
+		'You slide a second finger into your asshole. You can feel your anus squeezing your fingers tightly.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+			pcs_horny -= 50
+			pcs_ass += 1
+			'Pushing a second finger into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	else
+		pcs_ass += 1
+
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+		if agape = 0:agape = 1
+
+		pcs_horny -= 50
+		'When you slide in the second finger, you feel a sharp pain in your anus. You may have tried too much, too fast.'
+	end
+
+	gs 'stat'
+	'<<$AnyaMsg>>'
+
+	*nl
+	gs 'arousal', 'anal_finger', 5, 'masturbate'
+	gs 'stat'
+
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	if org_temp = orgasm and agape < 3:
+		if pcs_ass < 25:
+			act 'Keep fucking your ass with two fingers': gt 'selfplay', 'anal_fingering2a'
+		end
+		act 'Thrust three fingers in': gt 'selfplay', 'anal_fingering3'
+	end
+end
+
+if $ARGS[0] = 'anal_fingering2a':
+	cls
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/2.jpg"></center>'
+
+	if pcs_ass >= 10:
+		'You relax and squeeze a second finger in, alongside the first. It slides in fairly easily.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+
+			if pcs_ass > 1:pcs_ass -= 1
+
+			'Fucking your already sore asshole with two fingers was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	elseif pcs_ass >= 5 and pcs_ass < 10:
+		analplay += 1
+		'You slide a second finger into your asshole. You can feel your anus squeezing your fingers tightly.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+			pcs_horny -= 50
+			pcs_ass += 1
+
+			'Fucking your already sore asshole with two fingers was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	else
+		pcs_ass += 1
+
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+		if agape = 0:agape = 1
+
+		pcs_horny -= 50
+		'As you continue to fuck your ass, it hurts even more. It might be time to stop.'
+	end
+
+	gs 'stat'
+	'<<$AnyaMsg>>'
+
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+
+	*nl
+	gs 'arousal', 'anal_finger', 5, 'masturbate'
+	gs 'stat'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	if org_temp = orgasm and agape < 3:
+		if pcs_ass < 25:
+			act 'Keep fucking your ass with two fingers':gt 'selfplay', 'anal_fingering2a'
+		end
+		act 'Thrust three fingers in': gt 'selfplay', 'anal_fingering3'
+	end
+end
+
+if $ARGS[0] = 'anal_fingering3':
+	cls
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/3.jpg"></center>'
+
+	if pcs_ass >= 15:
+		'Your asshole is fairly loose, and you manage to slide three fingers in without much effort.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+
+			if pcs_ass > 1:pcs_ass += 1
+
+			'Pushing three fingers into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	elseif pcs_ass >= 10 and pcs_ass < 15:
+		analplay += 1
+		'You slide three fingers into your asshole. You can feel your anus squeezing your fingers tightly.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+			pcs_ass += 1
+			'Pushing three fingers into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	else
+		pcs_ass += 1
+
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+		if agape = 0:agape = 1
+
+		pcs_horny -= 50
+		'When you slide in three fingers, you feel a sharp pain in your anus. You may have tried too much, too fast.'
+	end
+
+	*nl
+	gs 'arousal', 'anal_finger', 5, 'masturbate'
+	gs 'stat'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	gs 'stat'
+	'<<$AnyaMsg>>'
+
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+
+	if org_temp = orgasm and agape < 3:
+		act 'Push four fingers into your asshole': gt 'selfplay', 'anal_fingering4'
+	end
+end
+
+if $ARGS[0] = 'anal_fingering4':
+	cls
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/4.jpg"></center>'
+
+	if pcs_ass >= 20:
+		'Your asshole is very loose, and you manage to push four fingers into it.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+
+			if pcs_ass > 1:pcs_ass -= 1
+
+			'Pushing four fingers into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	elseif pcs_ass >= 15 and pcs_ass < 20:
+		analplay += 1
+		'You manage to push four fingers into your asshole. You can feel your anus squeezing your fingers tightly.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+			pcs_ass += 1
+			'Pushing four fingers into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	else
+		pcs_ass += 1
+
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+		if agape = 0:agape = 1
+
+		pcs_horny -= 50
+		'When you slide in four fingers, you feel a sharp pain in your anus. You may have tried too much, too fast.'
+	end
+
+	*nl
+	gs 'arousal', 'anal_finger', 5, 'masturbate'
+	gs 'stat'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	gs 'stat'
+	'<<$AnyaMsg>>'
+
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+
+	if org_temp = orgasm and agape < 3:
+		act 'Put your whole hand in': gt 'selfplay', 'anal_fisting'
+	end
+end
+
+if $ARGS[0] = 'anal_fisting':
+	cls
+	SelfFisting += 1
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/5.jpg"></center>'
+
+
+	if pcs_ass >= 25:
+		'Slowly but surely, you manage to get your entire hand into your ass.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+			if pcs_ass > 1:pcs_ass -= 1
+
+			'Pushing your whole hand into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	elseif pcs_ass >= 20 and pcs_ass < 25:
+		analplay += 1
+		'It takes a lot of effort, but over the course of several minutes you manage to work your whole hand into your ass. You feel your anus squeeze your wrist tightly.'
+
+		if agape > 0:
+			if agape = 2:agape = 3
+			if agape = 1:agape = 2
+
+			pcs_horny -= 50
+			pcs_ass += 1
+			'Pushing your whole hand into your already sore asshole was a bad idea. It hurts a lot and you feel like you damaged it further.'
+		end
+	else
+		pcs_ass += 1
+
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+		if agape = 0:agape = 1
+
+		pcs_horny -= 50
+		'When you push your hand into your asshole, you feel a sharp pain in your anus. You may have tried too much, too fast.'
+	end
+
+	*nl
+	gs 'arousal', 'self_fisting_anal', 5, 'masturbate'
+	gs 'stat'
+
+	if $loc = 'vanrPar' and selfplaytime >= 60:gs 'selfplay', 'van_vtor'
+
+	gs 'stat'
+	'<<$AnyaMsg>>'
+
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+	if org_temp = orgasm and agape < 3:
+		act 'Keep fisting yourself':gt 'selfplay', 'anal_fisting2'
+	end
+end
+
+if $ARGS[0] = 'anal_fisting2':
+	cls
+	SelfFisting += 1
+	selfplaytime += 5
+	gs 'selfplay', 'sis_prov'
+
+	'<center><img <<$set_imgh>> src="images/shared/sex/mast/5.jpg"></center>'
+
+	*nl
+	gs 'arousal', 'self_fisting_anal', 5, 'masturbate'
+	gs 'arousal', 'self_fisting_anal', -15, 'masturbate'
+	gs 'stat'
+
+	'There is still a lot of resistance but you are able to move your fist backwards and forwards with it still in your butt. the feeling of being stretched so much and the rubbing inside your ass is blissful.'
+
+	if agape > 0:
+		if agape = 2:agape = 3
+		if agape = 1:agape = 2
+
+		if pcs_ass > 1:pcs_ass -= 1
+	end
+	act 'Stop touching yourself':gt 'selfplay', 'stop'
+	act 'Keep fisting yourself':gt 'selfplay', 'anal_fisting2'
+end
+
+if $ARGS[0] = 'stop':
+	analplay = 0
+	selfplaytime = 0
+	mastrOnce = 0
+	proverkasisterhere = 0
+
+	if vaginaTemp > pcs_vag * 2:pcs_vag += 1 & vaginaTemp = 0
+
+	gs 'arousal', 'end'
+	gs 'stat'
+	gt $loc, $loc_arg
+end
+
+
+
+
+--- selfplay ---------------------------------
+
